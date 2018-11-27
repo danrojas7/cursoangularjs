@@ -1,0 +1,110 @@
+<h3>{{titulo}}</h3>
+
+<strong>Empleado estrella</strong>:
+<br>
+<br>
+<br>
+<div *ngIf="trabajadorExterno == true">
+    <button (click)="cambiarExterno(false)">Mostrar empleado</button>
+    <ul>
+        <li>{{trabajadores[0].nombre}}</li>
+        <li>{{trabajadores[0].edad}}</li>
+        <li>{{trabajadores[0].cargo}}</li>
+        <li *ngIf="trabajadores[0].contratado == true">Está contratado</li>
+        <li *ngIf="trabajadores[0].contratado == false">NO está contratado</li>
+    </ul>
+</div>
+
+<div *ngIf="trabajadorExterno == false">
+    <button (click)="cambiarExterno(true)">Mostrar trabajador</button>
+    <ul>
+        <li>{{empleado.nombre}}</li>
+        <li>{{empleado.edad}}</li>
+        <li>{{empleado.cargo}}</li>
+        <li *ngIf="empleado.contratado == true">Está contratado</li>
+        <li *ngIf="empleado.contratado == false">NO está contratado</li>
+    </ul>
+</div>
+
+<hr>
+
+<h3>Listado de Empleados:</h3>
+<ul>
+    <li *ngFor="let empleado of trabajadores; let i = index">
+        <strong>Empleado - {{i+1}}</strong>
+        <ul>
+            <li>{{empleado.nombre}}</li>
+            <li>{{empleado.edad}}</li>
+            <li>{{empleado.cargo}}</li>
+            <li *ngIf="empleado.contratado == true">Está contratado</li>
+            <li *ngIf="empleado.contratado == false">NO está contratado</li>
+        </ul>
+    </li>
+</ul>
+
+<hr>
+<h3>Colores switch</h3>
+<ul [ngSwitch]="color">
+    <li *ngSwitchCase="'red'" [ngStyle]="{
+        'background': color,
+        'color': 'white',
+        'padding' : '20px'
+    }">
+        Es de color ROJO
+    </li>
+    <li *ngSwitchCase="'green'" [ngStyle]="{
+        'background': color,
+        'color': 'white',
+        'padding' : '20px'
+    }">
+        Es de color VERDE
+    </li>
+    <li *ngSwitchCase="'blue'" [ngStyle]="{
+        'background': color,
+        'color': 'white',
+        'padding' : '20px'
+    }">
+        Es de color AZUL
+    </li>
+</ul>
+
+<hr>
+<h3>Selector de colores</h3>
+<button (click)="logColorSeleccionado()">Mostrar log</button>
+<!-- Para utilizar ngModel se debe importar el módulo FormsModule, para definir el two way data-binding -->
+<input type="text" [(ngModel)]="colorSeleccionado" />
+
+<!--pre [style.border]="colorSeleccionado == 'red' ? '5px solid black' : '1px solid green'"
+    [class.fondoAzul]="colorSeleccionado == 'blue'">
+    <strong>Color elegido</strong>
+    {{colorSeleccionado}}
+</pre-->
+
+<pre [style.border]="colorSeleccionado == 'red' ? '5px solid black' : '1px solid green'" [ngClass]="{
+        fondoAzul: colorSeleccionado == 'blue',
+        fondoVerde: colorSeleccionado == 'green',
+        letraGrande: 1 == 1
+    }">
+    <strong>Color elegido</strong>
+    {{colorSeleccionado}}
+</pre>
+
+<!--pre [style.border]="colorSeleccionado == 'red' ? '5px solid black' : '1px solid green'" [ngClass]="[
+        'fondoAzul',
+        'letraGrande'
+    ]">
+    <strong>Color elegido</strong>
+    {{colorSeleccionado}}
+</pre-->
+
+<div [ngStyle]="{
+    'background': colorSeleccionado,
+    'color': 'white',
+    'width' : '200px',
+    'height': '200px',
+    'float' : 'right',
+    'margin-right': '70%'
+}"></div>
+<div style="clear: both"></div>
+
+

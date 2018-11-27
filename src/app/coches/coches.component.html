@@ -1,0 +1,45 @@
+<h1>Componente de coches</h1>
+<div>
+    <form #formCoche="ngForm" (ngSubmit)="onSummit(); formCoche.reset();" style="width: 200px;">
+        <p>
+            <label>Nombre:</label>
+            <input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="coche.nombre" required />
+            <span *ngIf="nombre.touched && !nombre.valid">
+                El campo "nombre" se encuentra vacío o tiene un valor que no es válido!!!
+            </span>
+        </p>
+        <p>
+            <label>Caballaje:</label>
+            <input type="text" name="caballaje" #caballaje="ngModel" [(ngModel)]="coche.caballaje" required pattern="[0-9]+" />
+            <span *ngIf="caballaje.touched && !caballaje.valid">
+                El campo "caballaje" se encuentra vacío o tiene un valor que no es válido!!!
+            </span>
+        </p>
+        <p>
+            <label>Color:</label>
+            <input type="text" name="color" #color="ngModel" [(ngModel)]="coche.color" required pattern="[a-zA-Z#]+" />
+            <span *ngIf="color.touched && !color.valid">
+                El campo "color" se encuentra vacío o tiene un valor que no es válido!!!
+            </span>
+        </p>
+        <input type="submit" value="Guardar" [disabled]="!formCoche.form.valid" />
+    </form>
+</div>
+<div class="listado">
+    <h4>Listado de coches</h4>
+    <ul>
+        <li *ngFor="let coche of coches">
+            {{coche.nombre}} - {{coche.caballaje}} - {{coche.color}}
+        </li>
+    </ul>
+</div>
+
+<div class="listado">
+    <h3>Listado de artículos</h3>
+    <ul *ngIf="articulos">
+        <li *ngFor="let articulo of articulos">
+            {{articulo.id}} - {{articulo.title}} <br> {{articulo.body}}
+        </li>
+    </ul>
+    <span *ngIf="!articulos">Cargando listado...</span>
+</div>
