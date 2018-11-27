@@ -1,0 +1,227 @@
+
+Para manejo propfesional de desarrollo de software o desarrollo web, se necesita la implementación de un sistema de control de versiones CVS
+
+Versión: Cuando nos encontramos desarrollando un producto, se dice que una versión al estado en el que se encuentra dicho producto en un momento concreto de su desarrollo.
+Control de versiones: Un buen desarrollo exige que se esté totalmente seguro que se puedan guardar y de volver recuperar cualquiera de las versiones que van sucediendo a medida que el proyecto va madurando. Se llama control de versiones a la gestión de esos cambios.
+
+Sistemas de control de versiones: Son programas que nos facilitan la gestión del control de cambios que permite el control de las distintas versiones del producto. El control de las distintas versiones se ha consolidado en el mundo de la industria informática para controlar el desarrollo y el código fuente de los programas, aunque se ha extendido también fuera del ámbito de desarrollo como por ejemplo documentos, trabajos con imágenes, creación de sitios web, e incluso a la escritura de libros
+
+Sistemas de control de versiones
+- CVS o Subversion
+- Mercurial o GIT
+
+Características de los sistemas de control de versiones:
+- Facilitan la gestión
+- Administran las versiones
+- Almacenan la información
+- Conservan el registro de las modificaciones
+- Sistemas de gestión centralizados
+	- CVS, subversion
+- Sistema de gestión distribuidos:
+	- GIT, Mercurial
+
+- Modos de almacenamiento de la información, archivos de texto, imágenes, documentación, código fuente
+- Posibilidad de realizar cambios sobre esos elementos, como realizar cambios parciales, añadir, borrar, renombrar, modificar
+- Cuentan también con un registro histórico de todas las acciones realizadas con cada uno de los elementos, y con el conjunto de los mismos, lo cual es clave en cualquier momento para extraerlos y revertir el producto en una fase anterior de su desarrollo
+- Dependiendo del sistema de control de versiones se puedan generar informes de los cambios que se van introductiendo entre, informe de estados, identificación nominal, identificación de la versión de un conjunto de ficheros, etc.
+
+Sistema de control de versiones centralizados
+- Repositorio centralizado de información a cargo de un administrado, facilita la administración pero también reduce la flexibilidad, ya que por ejemplo de tareas como por ejemplo en una rama la debe tomar el administrador.
+- CVS, subversion
+
+Sistema de control de versiones distribuidos
+- Cada usuario tiene su propio repositorio, no es necesario tomar decisiones centralizadamente sino que los distintos repositorios puede intercambiar y mezclar información entre ellos
+- Cada uno de los repositorios cuentan con una base datos que incluyen todo el repositorio e historial del proyecto
+- GIT, Mercurial
+- Convierten cada uno de los clientes en un auténtico espejo o mirror que guarda todo el repositorio, así que si cualquiera de los servidores que forma parte del proyecto muere, estos sistemas que están colaborarndo entre ellos, cualquiera de ellos es un repositorio que puede devolver la información y permitir que recupere todo lo necesario cualquiera de los otros servidores
+- Se hace una verificación, hace un backup completo en todos los clientes que participan
+- Flexibiliza el trabajo, pudiendo crear distintos grupos de personas, trabajando de distinto modo, pero manteniendo la coordinación y siguiendo el trabajo de forma centralizado, esto facilita ser mas flexible a diferencia de los sistemas de control de versiones centralizados que tienen un sistema de gestión mucho más jerarquizado.
+
+Diseñado por Linus Torvalds, que buscó especialmente la eficiencia y la confiabilidad del mantenimiento de versiones de aplicaciones, como en el caso del Kernel de Linux, que cuenta con una gran cantidad de archivos de código fuente así como también una gran cantidad de desarrolladores
+
+github
+- Servicio de hosting basado en la web para proyectos de desarrollo de software que utiliza git como sistema de control de versiones
+- Integrado con git, incluye funcionalidades de redes sociales como por ejemplo feeds, seguidores, un potente sistema de wikis e información estadística y gráfica sobre el proyecto.
+
+Historia de GIT
+- 2002 Bitkeeper, sobre este sistema de control de versiones distribuido, se acentuó el desarrollo del kernel de linux.
+- 2005 ras relaciones entre la compañia y la comunidad desarrolladora del kernel de linux se deterioró, por lo cual Linus Torvalds, se decidió a desarrollar su propio sistema de control de versiones basada en las lecciones y experiencias aprendidas en esos años
+- 2008 nacimiento de github, sistema de control de versiones para almacenamiento de código en línea, que tiene como núcleo a GIT
+
+Objetivos fundamentales de Linus cuando se decidió a crear GIT
+- Velocidad
+- Diseño simple
+- Idóneo para desarrollo no lineal, crear miles de ramas paralelas pero que sigan funcionando de forma coordinada
+- Sistema completamente distribuido, y que sea capaz de manejar grandes proyectos como el caso de kernel de Linux de modo eficiente en cuanto a la velocidad y el tamaño de los datos
+- Tiene un magnífico sistema de creación de ramas para el desarrollo no lineal
+
+GIT hace panorámicas completas, a diferencia de los sistemas de gestión de versiones centralizados, como en el caso de Subversion, ya que estos almacenan la información como lista de cambios realizados en determinados archivos. Van guardando en cada una de las versiones sólo los cambios que se hacen en cada archivo en concreto
+
+GIT, almacena la información como un conjunto de snapshot, crear un minisistema de gestión de archivos, imagen fija de como se ve el proyecto en ese momento.
+Otra de las ventajas del SCV, la mayoría de las operaciones que realiza son de manera local, lo que permite el acceso a la historia del proyecto de manera local por lo que no necesita acceder al servidor centralizado.
+
+Control de la integridad de los datos
+- Verificación de la calidad de los datos (checksum), con código de redundancia de los datos, para proteger la integridad de los datos garantizando que el contenido de los mismos no sean corrmpidos.
+- El mecanismos que GIT usa para el checsum, es el algoritmo SHA-1, string de 40 caracteres hexadecimales
+- Las acciones de GIT son modificables, cuando se lleva una acción en GIT, lo único que hace GIT es añadir información en su base de datos.
+
+El COMMIT es enviar los últimos cambios del código fuente al repositorio, convertir el cambio temporal en un cambio permatente.
+
+Estados de GIT
+- Directorio GIT
+	- Commited: Los datos están guardados de modo seguro en la base de datos del reposotorio
+- Área staging (exclusivo de GIT)
+	- Staged: Se puede ir colocando archuivos que se van a poder enviar en un próximo commit.
+- Directorio de trabajo
+	- Modified: Son cambios que se han realizado en uno o varios archivos pero que no se han guardado de ningún modo, por tanto es trabajo que sería susceptible de perderse.
+
+Tareas del curso
+- Instalar GIT
+- Enlazar la instalación con el github
+
+Comprobar la instalación de las claves ssh
+$ cd ~/.ssh
+En caso de que se necesite realizar backup de la información de los certificados ssh, se debe ingresar los siguientes comandos:
+$ mkdir key_backup
+$ cp id_rsa* key_backup
+$ rm id_rsa*
+
+Crear la clave ssh (genera la clave en el directorio C:\Users\<<usuario>>\.ssh\id_rsa)
+$ cd ~
+$ mkdir .ssh
+$ ssh-keygen -t rsa -C "rojasdaniel21@gmail.com"
+Contraseña: D4ni318721
+
+
+Crear la cuenta de github
+
+Username: danrojas7
+Email address: rojasdaniel21@gmail.com
+Password: D4ni318721@
+
+- Ir al Settings del dashboard de github, y seleccionar SSH and GPG keys
+- Copiar la información desde el archivo C:\Users\<<usuario>>\.ssh\id_rsa.pub, y pegarlo en el textarea que aparece
+
+Ahora se debe verificar en git que todo se ha realizado correctamente y que la clave funciona correctamente
+$ ssh git@github.com
+Se ingresa la contraseña que se configuró al momento de generar la clave ssh a partir del correo, es decir la clave del git, si es exitoso, muestra la siguiente información:
+Hi danrojas7! You've successfully authenticated, but GitHub does not provide shell access.
+Connection to github.com closed.
+
+Se configura el usuario:
+$ git config --global user.name "Daniel Rojas"
+Se configura el email del usuario:
+$ git config --global user.email "rojasdaniel21@gmail.com"
+
+Hay herramientas en GIT que conectan a github sin conectar a través de SSH, por estotoca configurar el token de github, con esto queda configurada en las herramientas el usuario de github y el token, es decir la constraseña encriptada
+$ git config --global github.user "danrojas7"
+$ git config --global github.token fce73a918b3be3d25001c36f5ff59959
+
+
+Cómo crear un repositorio
+- Para crear repositorios públicos se pueden crear sin límite de manera gratuita
+- Para crear repositorios privados sin límite, se requiere actualizar a una cuenta premium
+
+Comprobar que git y github están trabajando en conjunto:
+- Descargar el github desktop
+- Crear la carpera, crear el repositorio y realizar el primer commit:
+$ cd ~
+$ mkdir PrimerRepositorio
+$ cd PrimerRepositorio/
+$ echo "# primerrepositorio" >> README.md
+$ git init
+$ git add README.md // Se agrega el archivo al staged
+$ git commit -m "first commit"
+$ git remote add origin https://github.com/danrojas7/primerrepositorio.git
+$ git push -u origin master
+
+Comandos con GIT
+- Cómo configurar e inicializar un repositorio
+- Cómo empezar y detener el rastreo de archivos
+- Como guardar cambios en el stage y en commit
+- Como configurar git para ignorar archivos o patrones de archivos
+- Deshacer errores de manera rápida y sencilla
+- Navegar por la historia del proyecto, y validar klos cambios que se han realizado enmtre distintos commit
+- Cómo hacer push y pull en repositorios remotos
+
+Cómo obtener un repositorio GIT
+- Toma un proyecto que ya tengamos creados dentro en algún directorio existente
+    $ git init
+- Clona un repositorio existente ya en el servidor
+    $ git clone https://github.com/danrojas7/primerrepositorio.git other-name
+
+- Genera un nuevo repositorio a partir de un directorio en el cual se encuentre en la shell de la consola de GIT, a partir de un directorio vacío
+    $ git init
+
+- Para añadir archivos al repositorio, para agregarlos al stage
+    $ git add *.c
+    $ git add README
+- Realizar el commit de los archivos agregados al stage
+    $ git commit -m 'primera versión del proyecto'
+
+- Crear el repositorio a partir de una ruta existente o de un proyecto existente ya con archivos
+    $ git init
+- Para añadir archivos al repositorio, para agregarlos al stage
+    $ git add *.c
+    $ git add README
+- Realizar el commit de los archivos agregados al stage
+    $ git commit -m 'otro commit'
+
+- Obtener la copia de un repositorio ya existente
+    $ git clone url_repositorio directorio-destino
+
+    Los repositorios clonados se encontrarían como tracked y unmodified
+    Se pueden utilizar protocotolos distintos como por ejemplo:
+     - git://
+     - http://
+     - https://
+     - user@serverpath:// (ssh)
+
+Cada archivo que se encuentra en el directorio de trabajo, puede encontrarse en dos estados:
+    - tracked: rastreado son archivos que fueron que la última foto fija o último snapshot, o último commit, o el contenido de un repositorio clonado a un directorio de trabajo local, estos archivos no son modificados, son unmodified, solamente se recibe una copia tal cual como se encuentran en el repositorio. Si se llevan a cabo cambios en alguno de los archivos pasan a ser modified, es decir que han sido modificados, si se utiliza el add, quiere decir que los archivos están preparado para enviarsen en el siguiente commit, lo que quiere decir que están stagged. Únicamente los archivos tracked pueden tener alguno de los 3 estado anteriormente modificados: unmodified, modified, stagged.
+    - untracked: no rastreado, son todos los demás archivos, después de un commit, cuando se crean nuevos archivos, estos quedan con estado untracked porque no han sido enviados en ningún commit.
+
+    Los archivos obtenidos de un repositorio recién clonado, son archivos tracked, que a su vez son unmodified, si se modifican los archivos estos quedan en estado modified, pero al realizar commit, se debe recordar que solo los archivos que se agregaron a stage, es decir que están en estado stagged, solamente van a incluirse en dicho commit.
+    
+Ciclo de vida del status de un archivo
+    - untracked, cuando se añade un archivo nuevo, el cual de momento no hace parte de ningún commit.
+    - Cuando se añade el archivo en el proyecto, este archivo se encuentra en estado unmodified, cuando se agrega nuevo o se copia de otro proyecto.
+    - Cuando se modifica dicho archivo, este pasa al estado modifed
+    - Para que las modificaciones pasen a hacer parte del repositorio, primero deben enviarse al stage, que es la plataforma que permite añadir todas aquellas modificaciones que queremos que hagan parte de un commit.
+    - Debe hacerse un commit, para que todos los cambios pase a hacer parte del repositorio, con lo cual todos los archivos que hace parte de ese commit, pasan a hacer parte nuevamente del estado unmodified
+    El ciclo anterior se repite
+    
+Para que el archivo que esté en un estado tracked, y pase a un estado untracked, debe eliminarse del repositorio mediante el comando remove.
+Para obtener el estado de los archivos, si los archivos se encuentran tracked, untraked, unmodified, modified, o stagged, se hace mediante el comando siguiente:
+    $ git status
+Si se ejecuta el comando en un repositorio recién clonado, este muestra que el repositorio se encuentra limpio, es decir que no existe ningún cambio que sea susceptible de hacer commit. No existen archivos ni tracked ni modifed, tampoco existe archivos untracked, con lo cual si se presentan alguno de los 3 casos anteriores, git lo mostraría mendiante el comando anterior.
+De igual forma el comando indica en qué rama de desarrollo nos encontramos, por omisión nos vamos a encontrar en la rama master.
+
+Cómo se puede hacer tracking de los archivos, para empezar a trackear o a rastrear el archivo que creamos, se realiza mediante el siguiente comando:
+    $ git add ArchivoPropio
+Los cambios realizados posteriormente a un archivo o cambio que se encuentre stagged, al realizar un git status, muestra que los primeros cambios en el mismo archivos se encuentran en estado stagged, sin embargo los nuevos cambios se encuentran en estado modified
+
+Para quitar de estado stagged, se utiliza mendiante el siguiente comando
+    $ git reset HEAD ArchivoPropio
+
+Cómo hacer para que GIT ignore, en algunos casos necesitamos que git añada automáticamente, e incluso que sean archivos que no queremos que git los muestre que no queramos que git rastree. Se puede tratar de archivos que se generen automáticamente como puede ser archivos log o archivos de sistrema de construcción del lenguaje que nosotros estamos creando.
+se puede crear archivos listando partern, con glob patterns
+el archivo debe llamarse .gitignore
+
+Lo que se debe tener en cuenta para el archivo .gitignore
+- La líneas que empiezan por #, en este caso git los detecta como comentarios, por lo tanto son líneas ignoradas
+- Glob patterns estándar que se utilizan en los shell de unix
+- pattern de directorio/, para indicar que sea un directorio completo
+- con !, se niega el patrón
+
+www.jedit.org/users-guide/globs.html
+Página donde se pueden ver los glob pattern en muchos shells de unix, que son expresiones regulares simplificadas.
+Archivos, formatos, directorios, etc
+    
+
+
+    
+
+
+
+

@@ -1,0 +1,222 @@
+Instalar Node.js para el gestor de paquetes y dependencias npm
+
+Comprobar la versión del node.js
+
+$ node -v
+
+Para actualizar la versión del npm a una nueva versión (en caso de existir)
+Gestor nom sirve para instalar paquetes de node y javascript, y en general para gestionar dependencias.
+
+$ npm install -g npm
+
+Documentación instalación AngularJS
+
+Instalar Angular 4 paso a paso
+https://victorroblesweb.es/2017/03/28/instalar-angular-4-paso-paso/
+
+Como usar Angular CLI
+https://victorroblesweb.es/2016/12/10/usar-angular-cli-angular-2/
+
+Github y documentación de Angular CLI
+https://github.com/angular/angular-cli
+
+
+Se puede instalar Angular 4 de ambas formas:
+
+- Formá básica y arcaica para entender todas las cosas que se deben tener en cuenta
+- Angular cli
+   - Ofrece un esqueleto o arquetipo de aplicación básico
+   - Comandos para permitir generación de código
+   - Herramientas de mimificación y debugeo
+   - Bins para las webapps
+   - Webpack, para despliegue a producción de la aplicación
+
+Pasos para instalar AngularJS con la guía de inicio rápido
+ - Instalar la última versión de NodeJS
+ - Descargar el quickstart de angular desde su repositorio https://github.com/angular/quickstart
+    Proyecto base, con scafolding
+ - Descomprimir el archivo en cualquier ubicación del equipo
+ - Ingresar el comando, con esto se descarga todas las dependencias necesarias para el proyecto o framework
+   $ npm install
+   en la carpeta node_modules que contiene todas las depedencias necesarias, ya que se va a instalar todos los paquetes necsarios para angular4
+ - Se ingresa el comando
+   $ npm audit fix --force
+   Para solucionar las vulnerabilidades conocidas en las dependencias instaladas o el comando
+   $ npm audit
+   Para mostrar mayor detalle sobre las mismas
+   En el archivo package.json, se encuentra la versión de angular instalada
+ - Para validar que el framework está correctamente instalado, y para poder visualizar el "hola mundo" proveído dentro del paquete quickstart, para iniciar un miniservidor que viene incorperado se ingresa el siguiente comando.
+   $ npm install typescript -g
+   $ npm start
+   https://victorroblesweb.es/2018/05/23/solucion-vulnerabilities-error-con-npm/
+
+
+Pasos para instalar AngularJS con angular cli
+Como usar Angular CLI
+https://victorroblesweb.es/2016/12/10/usar-angular-cli-angular-2/
+Es una herramienta que nos ofrece un proceso de instalación de Angular muy fácil y que nos agiliza el inicio de un proyecto de Angular, ofrece instalación y esqueleto básico de una aplicación angular, com también herramientas y comandos para la generación de código y para la generación de mimificaciones y builds para la instalación en ambiente productivo, como también herramientas de debugging y testing, en fin, nos ofrece un entorno de desarrollo completo para trabajar comodamente en angular
+Instalar versión nueva versión de angular cli
+   $ npm install -g angular-cli
+
+Si ya se cuenta con versión anterior de agular cli y se requiere instalar nuevamente, se pueden ingresar los siguientes comandos:
+   $ npm uninstall -g @angular/cli
+   $ npm cache clean
+
+   $ npm install -g @angular/cli@latest
+   $ npm install -g angular-cli
+
+Para crear un nuevo proyecto en angular, se debe ingresar el siguiente comando:
+   $ ng new proyecto-angular4
+
+Para iniciar el lite server del proyecto, se ingresa el siguiente comando, dentro de la carpeta del proyecto
+   $ npm start
+   $ ng serve
+
+Para comprobar el acceso al lite server del proyecto, donde se muestra el hola mundo de angular, se ingresar a la siguiente dirección mediante un navegador web:
+http://localhost:4200/
+En caso de que salga un error, se debe instalar el npm, o en su defecto la versión del NodeJS.
+
+
+Análisis de la estructura de escritorio de un proyecto en AngularJS
+ - e2e Configuraciones del framework y del typescript, no se modifica y no se le presta atención
+ - node_modules Es la carpeta en donde se almacenan todas las dependencias y el framework y todos los paquetes necesarios para que el framework y el proyecto funcione, es todo lo que el npm descarga
+ - src Fuentes que se van a trabajar
+    - angular-cli.json configuraciones de angular cli y comandos, como por ejemplo como se generan los assets, en donde se guardan los buils generados, cual es el directorio root.
+    - .editorconfig Todas las configuraciones para un editor de código, que tiene aspectos como el encoding de los archivos
+    - .gitignore es un archivo que indica al versionador git para que ignore aquellos archivos que se encuentran allí, para que no se envién en los commit.
+    - karma.conf.js fichero para configuraciones de test funcionales con el framework
+    - package.json todas las dependencias que tiene el framework para quue funcione
+    - protactor.conf.js archivo propio del framework
+    - tsconfig.json fichero de configuración del typescript, que indica bajo qué estandar de JS se compila los archivos typescript
+    - tslint.json fichero de configuración del typescript para mejorar la identación del código.
+
+  - dentro del folder src
+    - tsconfig.app.json fichero de configuración del typescript
+    - tsconfig.spec.json fichero de configuración del typescript
+    - typings.d.ts fichero de configuración del typescript
+    - styles.css hoja de estilos
+    - main.ts fichero desde donde se carga la configuración principal de la aplicación de angular
+    - index.html página principal desde donde carga el framework
+    - enviroments folder con las configuraciones de tanto los entornos locales como también los de producción
+    - assets folder en donde se deben guardar las imágenes y los estilos css propios que vayamos a utilizar en la aplicación
+    - directorio app
+        - app.module.ts módulo principal de la aplicación
+        - app.component.ts componente principal de la aplicación
+        - app.component.spec.ts Detalles del compilador
+        - app.component.html Plantilla html del componente
+        - app.component.css Hoja de estilos del componente
+
+Qué es un componente y como funciona?
+    Un componente al final va a controlar un trozo de pantalla o de la vista. Todo lo que se puede ver en pantalla es controlado y gestionado por este tipo de elementos.
+    La lógica de un componente dentro de una clase en Angular es la que da soporte a una vista interactuando con ella a través de una API con propiedades y métodos
+    El componente hace de mediador entre la vista a través de la plantilla y  la lógica de la app donde se incluirá el modelo de datos, es decir una especie de controlador.
+
+    Se pueden definir componentes para un header, body, footer, calendar, listado de comentarios entre otros.
+
+    Las plantillas van a definir la vista de los componentes. Generalmente son archivos HTML y tienen sintaxis especial dentro de angular. permitiéndonos trabajar con directivas, data-binding, pipes, etc.
+
+    Para crear componentes se pueden estructurar de dos formas, una es creando una carpeta components, para los componentes, y los view, que son para trabajar las vistas, otra forma es trabajar en una carpeta específica para el componente adentro de ella todos aquillos que se requieran
+
+
+TypeScript
+Es una especie de pseudolenguaje para darle a JavaScript unas funcionalidades extra, permite trabajar también desde una forma más optima o limpia de manera visual en cuanto al código JS.
+    - 85 % JavaScript normal
+    - Nuevas características del EcmaScript 6
+    - Tipado fuerte
+    - Orientación a objetos mejorada
+    - Lenguaje interpretado (se transpila a JS)
+    - Extensión de los archivos .ts
+    - Superset de JS desarrollado por Microsoft
+
+Propiedades y tipos de datos
+
+Directivas
+
+Son pequeñas funciones o funcionalidades que se utilizan en las vistas, por ejemplo la etiqueta de un componente es una directiva, porque se invoca desde un HTML la funcionalidad que viene desde un componente. También una directiva sería un atributo html que hace una función específica que le aporta angular, por ejemplo el ngIf, ngFor, ngClass, ngSwitch. La directiva es una pequeña funcionalidad que se utiliza en la vista, ya sea para mostrar algo, para hacer condiciones, para añadir atributos, para mostrar un componente.
+
+ngIf funcionalidad de condicional en una vista
+ngFor Directiva para bucles
+
+Two-way data-binding
+
+NgStyle en atributo
+
+Directiva ngClass
+
+Configurar el routing
+    - Se crear dentro de la carpeta routing el archivo de configuración de la ruta app.routing.ts, que es para definir las rutas y exportar las variables para que framework pueda hacer uso de las mismas
+    - Se agrega dentro del app.module.ts, del modulo inicial de la aplicación, los import de las variables de appRoutingProviders y el appRoutes, y a continuación se agrega la variable routing dentro de los import, y appRoutingProviders dentro de los providers del @NgModule, esto le inidica al framework que para realizar el routing, debe utilizar las variables definicias inicialmente en el archivo app.routing.ts
+    - Se agrega el tag <router-outlet>, en la página del index, para indicar a angular que desde la página principal emplée el routing definido.
+
+Menú de navegación y marcado de elementos al hacer
+
+Enviar parámetros por la URL (querystring)
+    - Se agrega /:parametro, a la URL del path del componente en el routing que queramos que utilice la aceptación de los parámetros
+    - En la clase del componente que va aceptar parámetros por querystring, se debe definir el import:
+        import { Router, ActivatedRoute, Params } from '@angular/router';
+    - Definir en el constructor de la clase componente , los parámetros, para que se tenga los parámetros para acceder a los parámetros por URL
+        private _route: ActivatedRoute,
+        private _router: Router
+    - Implementar en el ngOnInit del componente, una función de fecha que permite obtener el parámetro
+
+Redirecciones en el Router
+    - Se puede implementar en un botón con el evento (click)="redirigir()"
+    - Se implementa dentro del método invocado, la siguiente línea para realizar una redirección:
+        this._router.navigate(['/ruta-a-redirigir']);
+
+Servicios
+    Son clases con un objetivo claro que facilitan la reutilización de código, y son un tipo de componentes o una parte de la arqutectura de la aplicación que nos permitirá separar un poco de lógica del componente, y que sea posible llevarla a un servicio, como por ejemplo, con el trabajo de APIs, con http, y funcionalidades complejas que son susceptibles de reutilizarse, y que posteriormente, ente mediante la inyección de dependencias, lo podemos utilizar en un componente principal.
+
+    - Se crea el servicio con el componente injectable, que permite por inyección de dependencias utilizar el servicio
+    - Desde el componente consumidor, se genera import de la clase del servicio, acto seguido se define en el providers del componente, la clase del servicio para que se aposible definir la instancia de consumo del servicio por inyeccuión de dependencias.
+    - Se crea la propiedad instancia de la clase del servicio dentro del constructor, para que sea posible acceder a las operaciones del servicio
+
+/////////////////////////////////////// JESUS CONDE ///////////////////////////////////////
+
+crear un nuevo componente a partir de consola, esto crea la estructura de un nuevo componente, con los ficheros de ts, el css, y la plantilla HTML, también registra el componente recién creado en el app.module.js:
+    $ ng generate component nuevo
+
+Interpolación, susutitución de una variable desde HTML por el valor equivalente de una variable que se encuentra en el interior de un componente
+@NgModule Angular Module, el nuevos sitema de módulos introducido en angular, con el fin de organizar el código de una manera más efectiva app.module.ts
+bootstrap es una propiedad para establecer el módulo principal (main) de la aplicación.
+
+angular quickstart source
+
+Crear un nuevo proyecto con el preifijo definido de manera explícita
+$ ng new nggallery --prefix ng
+
+Crear un nuevo componente para la barra de navegación:
+$ ng g c navbar -is --flat
+ó
+$ ng generate component navbar -is --flat
+-is -> --inline-style Indica que no se cree la hoja de estilos ya para los estilos se va a utilizar bootstrap
+--flat flag que indica si no queremos que cree una carpeta exclusiva para el componente
+Para obtener la información de todos los flags disponibles, se puede obtener mediante el siguiente comando:
+$ ng genetare component --help
+
+Tareas a realizar
+Validar promesas en angular
+
+/////////////////////////////////////// JESUS CONDE ///////////////////////////////////////
+
+Pipe, tuberías o filtros
+Son pequeñas funciones para realizar algunas tarea en nuestra vista o plantilla de angular, (trasformar fecha, minúscula o mayúscula), para transformación de información, conversión texto o procesamiento de información. Se pueden crear pipes personalizados.
+
+Formularios en AngularJS
+Como crear un formulario en AngularJS, y como validar los campos de un formulario, como enviar ese forulario y como modificar el modelo de datos presente en un comoponente u objeto para procesar la información o enviarla hacia el servidor.
+    - Crear un nuevo componente
+
+Servicios HTTP y AJAX
+Para solucionar el siguiente error:
+ERROR in node_modules/rxjs/Observable.d.ts(1,15): error TS2307: Cannot find module 'rxjs-compat/Observable'.
+Se debe ejecutar el siguiente comando:
+    $ npm install --save rxjs-compat
+
+Consumir un servicio por HTTP
+https://jsonplaceholder.typicode.com/
+
+Solución al error por intentar consumir por el método proporcionado en el servicio
+https://victorroblesweb.es/2017/11/06/httpclient-en-angular-5-ejemplos-servicios-ajax-rest/
+
+
+
