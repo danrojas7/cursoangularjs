@@ -219,4 +219,38 @@ Solución al error por intentar consumir por el método proporcionado en el servic
 https://victorroblesweb.es/2017/11/06/httpclient-en-angular-5-ejemplos-servicios-ajax-rest/
 
 
+Más peticiones por cada uno de los verbos http, desarrollado de api rest y realizar nuestras propias peticiones a través de un cliente rest como postman, hacer màs tipos de peticiones ajax en angular.
+
+Introducción a NgTemplate
+Permite hacer un ngIf y un ngElse dentro de las plantillas de angular 4.
+
+Instalar wabp de manera local, que contiene PHP, MySQL y Apache
+Mostrar las bases de datos de MySQL
+show database
+
+Introducción al desarollo de servicios REST
+API Rest, no es más que una aplicación web a nivel de backend que va a interactuar con una base de datos y va a poder ser utilizada por cualquier tipo de aplicación o dispositivo que entienda el protocolo HTTP, es decir que desde la aplicación de AngularJS vamos a hacer peticiones AJAX a los métodos de esa API es decir a las URLs que nos provea ese backend.
+Como hacer una API rest básica para trabajar con la base de datos, y consumirla con AJAX, como hacer un API rest con PHP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

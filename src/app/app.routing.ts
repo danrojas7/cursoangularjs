@@ -8,6 +8,7 @@ import { FrutaComponent } from './fruta/fruta.component';
 import { HomeComponent } from './home/home.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { CochesComponent } from './coches/coches.component';
+import { PlantillasComponent } from './plantillas/plantillas.component';
 
 // Variable para almacenas los objetos JSON con la información de las rutas
 const appRoutes: Routes = [
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
     { path: 'contacto', component: ContactoComponent },
     { path: 'contacto/:page', component: ContactoComponent },
     { path: 'coches', component: CochesComponent },
+    { path: 'plantillas', component: PlantillasComponent },
     { path: '**', component: HomeComponent }, // Una ruta por defecto, cuando se produzca un error de un componente que no exista, o cuando la ruta falle
 ];
 
