@@ -112,7 +112,7 @@ $ git config --global user.email "rojasdaniel21@gmail.com"
 
 Hay herramientas en GIT que conectan a github sin conectar a través de SSH, por estotoca configurar el token de github, con esto queda configurada en las herramientas el usuario de github y el token, es decir la constraseña encriptada
 $ git config --global github.user "danrojas7"
-$ git config --global github.token fce73a918b3be3d25001c36f5ff59959
+$ git config --global github.token token
 
 
 Cómo crear un repositorio
