@@ -219,4 +219,55 @@ Solución al error por intentar consumir por el método proporcionado en el servic
 https://victorroblesweb.es/2017/11/06/httpclient-en-angular-5-ejemplos-servicios-ajax-rest/
 
 
+Realizar una API Rest en PHP
+
+Acceso a CORS y host virtuales
+
+Acceso CORS:
+Cuando trabajamos con AJAX puede pasar que nos salten errores con el CORS, antes de empezar configura tu servidor web Apache de esta forma:
+http://victorroblesweb.es/2016/01/20/evitar-error-cors-access-control-allow-origin-con-ajax/
+
+Hosts virtuales:
+Si quieres simular el ambiente que va a tener tu aplicación en producción y no quieres usar el lite-server puedes crear un host virtual en Apache y así simular un dominio real:
+http://victorroblesweb.es/2016/03/26/crear-varios-hosts-virtuales-en-wampserver/
+
+
+Desarrollo de servicios REST
+http://victorroblesweb.es/2015/01/16/api-rest-con-slim/
+
+
+Crear el API rest
+Framework en PHP para crear un API rest slim
+Composer es un equivalente a npm para crear y actualizar componentenes, es un gestor de dependencias que permitirá instalar dependencias, actualizar o quitar dependencias
+
+
+
+Instalar el Framework de PHP slim
+
+
+- Crear una carpeta dentro del www del wamp server, curso-angular4-backend
+- Crear archivo SQL para crear la estructura de la tabla para un servicio rest básico
+- Subir el archivo en phpmyadmin localhost/phpmyadmin, bajo la opción de importar
+- Instalar el framework para crear el servicio rest en PHP, slim, primero se debe instalar el composer
+	https://getcomposer.org/download/
+- Instalar el complemento de piramide-uploader, dentro de la carpeta curso-angular4-backend
+	https://github.com/victorobs/piramide-uploader
+- Crear el archivo composer.json, para indicarle al composer que instale el framwork slim, ademàs que agregue el complemento de piramide-uploader
+- Agregar un fichero de prueba index.php, para asegurarse que el framework slim quedó instalado correctamente.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

@@ -13,6 +13,7 @@ import { ConversorPipe } from './pipes/conversor.pipe';
 import { CochesComponent } from './coches/coches.component';
 // Importar HttpClientModule
 import { HttpClientModule } from '@angular/common/http';
+import { PlantillasComponent } from './plantillas/plantillas.component';
 
 
 @NgModule({ // Crear un módulo, este caso crea el módulo de AppModule el cual es el módulo
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     ContactoComponent,
     ConversorPipe,
-    CochesComponent
+    CochesComponent,
+    PlantillasComponent
   ],
   imports: [ // Cargar diferentes módulos, funcionalidades y servicios, cargar módulos del Framwork y los
     // que se van creando para que los utilice la aplicación para que funcionen de manera
