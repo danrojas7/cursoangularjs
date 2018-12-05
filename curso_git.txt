@@ -216,7 +216,8 @@ www.jedit.org/users-guide/globs.html
 Página donde se pueden ver los glob pattern en muchos shells de unix, que son expresiones regulares simplificadas.
 Archivos, formatos, directorios, etc
     
-
+- Para traer todos los cambios realizados en una ramificación, descargarlos del repositorio:
+    $ git pull origin master
 
     
 
