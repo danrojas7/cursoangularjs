@@ -90,14 +90,11 @@ Crear la clave ssh (genera la clave en el directorio C:\Users\<<usuario>>\.ssh\i
 $ cd ~
 $ mkdir .ssh
 $ ssh-keygen -t rsa -C "rojasdaniel21@gmail.com"
-Contraseña: D4ni318721
-
 
 Crear la cuenta de github
 
 Username: danrojas7
 Email address: rojasdaniel21@gmail.com
-Password: D4ni318721@
 
 - Ir al Settings del dashboard de github, y seleccionar SSH and GPG keys
 - Copiar la información desde el archivo C:\Users\<<usuario>>\.ssh\id_rsa.pub, y pegarlo en el textarea que aparece
