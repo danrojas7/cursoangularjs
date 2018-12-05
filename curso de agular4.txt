@@ -255,7 +255,8 @@ Instalar el Framework de PHP slim
 - Crear el archivo composer.json, para indicarle al composer que instale el framwork slim, ademàs que agregue el complemento de piramide-uploader
 - Agregar un fichero de prueba index.php, para asegurarse que el framework slim quedó instalado correctamente.
 
-
+Configurar cabeceras en PHP para permitir el acceso CORS
+https://victorroblesweb.es/2017/04/23/cabeceras-http-php-permitir-acceso-cors/
 
 
 

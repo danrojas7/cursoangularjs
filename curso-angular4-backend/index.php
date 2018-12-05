@@ -9,6 +9,16 @@ require 'vendor/autoload.php';
 $app = new \Slim\App;
 $db = new mysqli('localhost', 'root', '', 'curso_angular4');
 
+// Configuración de cabeceras
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+header("Allow: GET, POST, OPTIONS, PUT, DELETE");
+$method = $_SERVER['REQUEST_METHOD'];
+if($method == "OPTIONS") {
+    die();
+}
+
 
 $app->get('/prueba', function (Request $request, Response $response) use($app, $db) {
     echo "Hola mundo desde Slim PHP";
@@ -129,7 +139,7 @@ $app->post('/upload-file', function (Request $request, Response $response) use($
         $file = $piramideUploader->getInfoFile();
         $file_name = $file['complete_name'];
 
-        if(isset($upload) && $upload['uploader'] == false) {
+        if(isset($upload) && $upload['uploaded'] == false) {
             $result = array(
                 'status' => 'unsucess',
                 'code' => 404,
