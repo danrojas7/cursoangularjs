@@ -256,7 +256,8 @@ Instalar el Framework de PHP slim
 - Agregar un fichero de prueba index.php, para asegurarse que el framework slim quedó instalado correctamente.
 
 
-
+Permitir el acceso CORS en apache y habilitar la cabecera http
+https://victorroblesweb.es/2017/04/23/cabeceras-http-php-permitir-acceso-cors/
 
 
 
