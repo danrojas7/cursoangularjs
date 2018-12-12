@@ -258,7 +258,28 @@ Instalar el Framework de PHP slim
 Configurar cabeceras en PHP para permitir el acceso CORS
 https://victorroblesweb.es/2017/04/23/cabeceras-http-php-permitir-acceso-cors/
 
+Permitir el acceso CORS en apache y habilitar la cabecera http
+https://victorroblesweb.es/2017/04/23/cabeceras-http-php-permitir-acceso-cors/
 
+
+Desarrollo de la aplicación completa con Angular 7 y Boostrap
+- Instalación y generación de proyecto
+- Integrar Boostrap
+- Configurar rutas y páginas
+- Listado de productos
+- Añadir productos
+- Editar productos
+- Eliminar productos
+- Subir imágenes
+- Y varias cosas más
+
+Crear el nuevo proyecto con la carpeta:
+	$ ng new proyecto-angular7-webapps
+Validar el funcionamiento del proyecto recién creado, se inicia el servidor con cualquiera de los comandos:
+	$ ng serve
+	$ npm start
+Se comprueba el acceso a la aplicación mediante la siguiente URL:
+	http://localhost:4200/
 
 
 

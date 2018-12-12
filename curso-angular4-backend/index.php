@@ -130,7 +130,7 @@ $app->post('/upload-file', function (Request $request, Response $response) use($
     $result = array(
         'status' => 'unsucess',
         'code' => 404,
-        'message' => 'El archivo no ha podido subirse.'
+        'message' => 'El archivo de imagen no ha podido subirse.'
     );
 
     if (isset($_FILES['uploads'])) {
