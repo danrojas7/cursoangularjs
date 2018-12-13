@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms'; // Se utiliza el routing 
 import { routing, appRoutingProviders } from './app.routing';
-
+// Importar HttpClientModule
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { FrutaComponent } from './fruta/fruta.component';
@@ -11,8 +12,6 @@ import { HomeComponent } from './home/home.component';
 import { ContactoComponent } from './contacto/contacto.component';
 import { ConversorPipe } from './pipes/conversor.pipe';
 import { CochesComponent } from './coches/coches.component';
-// Importar HttpClientModule
-import { HttpClientModule } from '@angular/common/http';
 import { PlantillasComponent } from './plantillas/plantillas.component';
 
 
