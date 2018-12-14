@@ -10,11 +10,17 @@
 </div-->
 
 <ng-template #admin>
-    <button (click)=cambiar(false)>Cambiar estado</button>
-    <strong style="background: yellow">Eres administrador de la WebApp</strong>
+  <button (click)=cambiar(false)>Cambiar estado</button>
+  <strong style="background: yellow">Eres administrador de la WebApp</strong>
 </ng-template>
 
 <ng-template #noAdmin>
   <button (click)=cambiar(true)>Cambiar estado</button>
   <strong style="background: red; color: white;">NO eres administrador de la WebApp</strong>
 </ng-template>
+
+
+<hr>
+<!--componente-hijo [texto1]="'Valor de la propiedad 1'" [texto2]="'Valor de la propiedad 2'"></componente-hijo-->
+
+<componente-hijo [texto1]="datoExterno" [texto2]="identity.web"></componente-hijo>

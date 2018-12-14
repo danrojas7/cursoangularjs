@@ -13,6 +13,7 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { ConversorPipe } from './pipes/conversor.pipe';
 import { CochesComponent } from './coches/coches.component';
 import { PlantillasComponent } from './plantillas/plantillas.component';
+import { HijoComponent } from './hijo/hijo.component';
 
 
 @NgModule({ // Crear un módulo, este caso crea el módulo de AppModule el cual es el módulo
@@ -26,7 +27,8 @@ import { PlantillasComponent } from './plantillas/plantillas.component';
     ContactoComponent,
     ConversorPipe,
     CochesComponent,
-    PlantillasComponent
+    PlantillasComponent,
+    HijoComponent
   ],
   imports: [ // Cargar diferentes módulos, funcionalidades y servicios, cargar módulos del Framwork y los
     // que se van creando para que los utilice la aplicación para que funcionen de manera
