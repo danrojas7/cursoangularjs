@@ -14,9 +14,15 @@ class PiramideUploader
 	{
 		$this->info_file = array(
 			"name" => $_FILES["$file"]["name"],
+			/*
 			"complete_name" => $name . "-" . time() . "-" . (is_array($_FILES["$file"]["name"]) ? $_FILES["$file"]["name"][0] : $_FILES["$file"]["name"]),
 			"temporal_name" => (is_array($_FILES["$file"]["tmp_name"]) ? $_FILES["$file"]["tmp_name"][0] : $_FILES["$file"]["tmp_name"]),
 			"type" => (is_array($_FILES["$file"]["type"]) ? $_FILES["$file"]["type"][0] : $_FILES["$file"]["type"]),
+			 */
+			"complete_name" => $name . "-" . time() . "-" . $_FILES["$file"]["name"],
+			"temporal_name" => $_FILES["$file"]["tmp_name"],
+			"type" => $_FILES["$file"]["type"],
+
 			"size" => $_FILES["$file"]["size"],
 			"error" => $_FILES["$file"]["error"]
 		);

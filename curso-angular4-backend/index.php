@@ -106,7 +106,7 @@ $app->post('/update-producto/{id}', function (Request $request, Response $respon
     }
     $sql .= "WHERE ID = {$args['id']};";
     $query = $db->query($sql);
-    var_dump($sql);
+    // var_dump($sql);
 
     if ($query) {
         $result = array(
