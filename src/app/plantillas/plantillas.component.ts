@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class PlantillasComponent implements OnInit {
   public titulo: string;
   public administrador: boolean;
+  public datosDelHijo: any;
 
   public datoExterno: string = "Victor Robles";
   public identity = {
@@ -27,6 +28,11 @@ export class PlantillasComponent implements OnInit {
 
   cambiar(administrador: boolean) {
     this.administrador = administrador;
+  }
+
+  recibirDatos(event) {
+    console.log(event.nombre);
+    this.datosDelHijo = event;
   }
 
 }

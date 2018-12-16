@@ -23,4 +23,12 @@
 <hr>
 <!--componente-hijo [texto1]="'Valor de la propiedad 1'" [texto2]="'Valor de la propiedad 2'"></componente-hijo-->
 
-<componente-hijo [texto1]="datoExterno" [texto2]="identity.web"></componente-hijo>
+<componente-hijo [texto1]="datoExterno" [texto2]="identity.web" (desdeElHijo)="recibirDatos($event)">
+</componente-hijo>
+
+<div *ngIf="datosDelHijo">
+  <h3>Datos del hijo inyectados al padre</h3>
+  <h4>{{datosDelHijo.nombre}}</h4>
+  <h4>{{datosDelHijo.web}}</h4>
+  <h4>{{datosDelHijo.twitter}}</h4>
+</div>

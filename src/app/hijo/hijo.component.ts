@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
 @Component({
     selector: 'componente-hijo',
@@ -10,6 +10,8 @@ export class HijoComponent {
     @Input('texto1') public propiedadUno: string;
     @Input('texto2') public propiedadDos: string;
 
+    @Output() public desdeElHijo = new EventEmitter();
+
     constructor() {
         this.titulo = 'Componente Hijo';
     }
@@ -17,5 +19,15 @@ export class HijoComponent {
     ngOnInit() {
         console.log(this.propiedadUno);
         console.log(this.propiedadDos);
+        this.enviar(null);
     }
+
+    enviar(event) {
+        this.desdeElHijo.emit({
+            nombre: "Victor Robles Web",
+            web: 'victorroblesweb.es',
+            twitter: '@victorobs'
+        });
+    }
+
 }
