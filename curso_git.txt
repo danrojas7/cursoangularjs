@@ -110,6 +110,8 @@ Se configura el usuario:
 $ git config --global user.name "Daniel Rojas"
 Se configura el email del usuario:
 $ git config --global user.email "rojasdaniel21@gmail.com"
+Ver la información de la configuración:
+$ git config --list
 
 Hay herramientas en GIT que conectan a github sin conectar a través de SSH, por estotoca configurar el token de github, con esto queda configurada en las herramientas el usuario de github y el token, es decir la constraseña encriptada
 $ git config --global github.user "danrojas7"
@@ -220,7 +222,31 @@ Archivos, formatos, directorios, etc
     $ git pull origin master
 
     
+Instalar jQuery
+- Se puede añadir jQuery al package.json
+- Instalarlo a partir del CDN, descargarla manual y referenciarla en el index del proyecto
+- Para utilizarse dentro de un typescript del componente
+declare var jQuery: any;
+declare var $: any;
 
 
+Proyecto de angular en producción
+Paso 1. Crear proyecto con Angular CLI: ng new restaurantes-an2prod
+Paso 2. Copiar directorio app del proyecto ya creados
+Paso 3. Cambiar paths de vistas e imágenes para adaptar a la estructura de CLI
+Paso 4. Probar la APP con ng serve
+Paso 5. Generar build: ng build --producción
+Paso 7. Copiar al directorio del servidor (host)
+Paso 6. Cambiar base url (si estamos en un subdirectorio)
+Paso 7. Añadir .htaccess (si estamos en un subdirectorio)
+<IfModule mod_rewrite.c>
+	Options Indexex FolowSymLinks
+	RewriteEngine On
+	RewriteBase /client/
+	RewriteRule ^index\.html$ - [L]
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteCond . index.html [L]
+</IfModule>
 
 

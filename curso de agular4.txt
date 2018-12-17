@@ -60,7 +60,9 @@ Instalar versión nueva versión de angular cli
 
 Si ya se cuenta con versión anterior de agular cli y se requiere instalar nuevamente, se pueden ingresar los siguientes comandos:
    $ npm uninstall -g @angular/cli
+   $ npm cache verify
    $ npm cache clean
+   $ npm cache clean --force
 
    $ npm install -g @angular/cli@latest
    $ npm install -g angular-cli
@@ -249,9 +251,9 @@ Instalar el Framework de PHP slim
 - Crear archivo SQL para crear la estructura de la tabla para un servicio rest básico
 - Subir el archivo en phpmyadmin localhost/phpmyadmin, bajo la opción de importar
 - Instalar el framework para crear el servicio rest en PHP, slim, primero se debe instalar el composer
-	https://getcomposer.org/download/
+    https://getcomposer.org/download/
 - Instalar el complemento de piramide-uploader, dentro de la carpeta curso-angular4-backend
-	https://github.com/victorobs/piramide-uploader
+    https://github.com/victorobs/piramide-uploader
 - Crear el archivo composer.json, para indicarle al composer que instale el framwork slim, ademàs que agregue el complemento de piramide-uploader
 - Agregar un fichero de prueba index.php, para asegurarse que el framework slim quedó instalado correctamente.
 
@@ -274,22 +276,65 @@ Desarrollo de la aplicación completa con Angular 7 y Boostrap
 - Y varias cosas más
 
 Crear el nuevo proyecto con la carpeta:
-	$ ng new proyecto-angular7-webapps
+    $ ng new proyecto-angular7-webapps
 Validar el funcionamiento del proyecto recién creado, se inicia el servidor con cualquiera de los comandos:
-	$ ng serve
-	$ npm start
+    $ ng serve
+    $ npm start
 Se comprueba el acceso a la aplicación mediante la siguiente URL:
-	http://localhost:4200/
+    http://localhost:4200/
 
 
 
+Còmo instalar Angular CLI para instalar Angular 5
+https://victorroblesweb.es/2017/11/02/usar-angular-cli-para-instalar-angular-5/
 
 
+Cómo actualizar un proyecto de Angular 4 a Angular 5
+https://victorroblesweb.es/2017/11/02/actualizar-proyecto-angular-4-a-angular-5/
+- Se puede generar un nuevo proyecto en las nuevas versiones de angular, y se puede copiar el código fuente al proyecto
+- Mediante las instrucciones de la siguiente página
+    https://victorroblesweb.es/2017/11/02/actualizar-proyecto-angular-4-a-angular-5/
+
+Respecto a las novedades de las versiones posteriores con respecto a la versión 4 de Angular, existe una nueva versión del módulo
+https://victorroblesweb.es/2017/11/06/httpclient-en-angular-5-ejemplos-servicios-ajax-rest/
 
 
+Solución a los errores de vulnerabilities cuando se instala angular con npm
+ $ npm install -g npm@latest
+ $ npm -v
+
+ $ npm cache clean --force
+ $ npm set audit false
+ $ ng new instalacion-angular6-test
+
+Novedades en estructura de ficheros y directorios
+ - Para generar un nuevo componente
+    $ ng generate component pruebas
+
+Actualizar un proyecto a la última versión en angular
+ $ npm install @angular/cli@latest
+ $ ng update @angular/cli
+ $ ng update // Muestra las dependencias que hay que actualizar
+ $ ng update --all
+ $ ng update --all --force
+ $ npm uninstall --save typescript
+ $ npm clean --force
+ $ npm install --save typescript@2.7.2
+ $ npm uninstall --save typescript // desinstalar
+ $ npm install --save-dev typescript@2.7.2 // Instalar como depedencia de desarrollo
+ $ npm uninstall --save bootstrap // desinstalar bootstrap
+ $ npm install --save@3.3.6 bootstrap // desinstalar bootstrap
+ $ npm uninstall --save jquery // desinstalar jquery
+ $ npm uninstall --save jquery@1.9.1 // desinstalar
 
 
+ Solución a problemas con rxjs y Observable de Angular
+ $ npm uninstall --save rxjs-compat
+ $ npm install --save rxjs-compat
 
 
+ Novedades Angular7
+ - Módulo de ScrollModule
+ - Módulo de drag and drop
 
 
