@@ -338,3 +338,19 @@ Actualizar un proyecto a la última versión en angular
  - Módulo de drag and drop
 
 
+1. Master en JavaScript: Aprender JS, jQuery, Angular 7, NodeJS
+https://www.udemy.com/master-en-javascript-aprender-js-jquery-angular-nodejs-y-mas/?couponCode=MASTER-UDM
+
+2. Curso de Angular 7 avanzado: MEAN, JWT, Módulos, Animaciones
+https://www.udemy.com/curso-de-angular-2-4-5-avanzado-mean-jwt/?couponCode=ANAV-UDM
+ 
+3. Desarrollar una red social con JavaScript, Angular y NodeJS
+https://www.udemy.com/desarrollar-una-red-social-con-javascript-angular-y-nodejs-mongodb/?couponCode=MEANSOC-UDM
+
+4. Desarrollo web con JavaScript, Angular, NodeJS y MongoDB
+https://www.udemy.com/desarrollo-web-con-javascript-angular-nodejs-y-mongodb/?couponCode=JS-DI-UDEMY
+
+5. Angular y NodeJS en producción - Configurar un servidor VPS
+https://www.udemy.com/angular-y-nodejs-en-produccion-configurar-un-servidor-vps/?couponCode=MEANPROD-UDM
+
+
