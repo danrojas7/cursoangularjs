@@ -1,0 +1,77 @@
+https://ionicframework.com/docs/cli
+
+$ npm install -g ionic@latest
+
+Empezar un nuevo proyecto
+$ ionic start myNewProject
+
+Usar codova
+npm install -g cordova
+
+Crear una nueva página
+$ ionic generate page Login
+
+Crear un nuevo provider (servicio)
+$ ionic generate provider usuario
+
+
+Estructura de carpetas y directorios
+/resources
+recursos para las plataformas de ios y android, también es para modificar las imágenes de icon.png y splash.png
+
+Para manipular los recursos de las plataformas, existen comandos de ionic para modificarlos, por lo cual no se modifican directamente
+
+.editorconfig
+Archivo propio del editor de código que se está usando
+
+.gitignore
+Todo lo que se encuentre en este archivo no se va a versionar en git
+
+config.xml
+id, es el generado automáticamente por ionic, en ese caso se pone de manera inversa el id de la aplicación, por ejemplo: com.fernandoherrera.app0001, es importante para desplegar en las tiendas.
+El archivo se va a ir modificando de manera automática, por lo tanto cuando se agreguen plugins de cordoba entre otras cosas, ionic modificará automáticamente el archivo. El archivo indica a  ionic cómo compilar el instalador en las diferentes plataformas según la información adjunta en él.
+
+ionic.config.json
+Configuraciones del dashboard de ionic, el archivo se manipula también de forma automática
+
+package-lock.json
+Es un archivo, lo manipula de manera automática node, que indica con qué paquetes fue construida la aplicación, no es tan importante como el archivo:
+
+package.json
+tiene información de la aplicación, la versión y el autor, lo que se puede modificar, la sección de scrips no se deben modificar, las dependencias son todas los paquetes que se van a instalar en el proyecto, por lo general se van a utilizar las últimas versiones que se estén manejando, pero igual si se requiere adicionar una manualmente para ser instalada se puede hacer.
+Las dependencias de desarrollo, no van a ir a la hora de pasar la aplicación al dispositivo movil, pero si se van a utilizar como dependencia de desarrollo en el proyecto
+
+tsconfig.json
+Archivo de configuración global del typescript, en el que se indica la versión en la que está trabajando el typescript (ECMA6), si se desea compilar cada vez que se guarde el proyecto, entre otras configuraciones
+
+tslint.json
+archivo que indica a los plugins del editor de código para darles ayuda al momento de escribir el código, como por ejemplo subrayar errores de sintáxis entre otras ayudas
+
+/src
+Los códigos fuente de la aplicación
+dentro del directorio app/ se encuentra los fuentes del componente root de la aplicación
+- app.component.ts, es el primer componente que se lanza cuando se carga la aplicación
+- app.html html desde donde se lanza el rootPage
+- app.module.ts archivo en el que se le indica a la aplicación qué páginas tiene, qué servicios usa, qué plugins se están utilizando
+- app.scss archivo sas que permite configuraciones globales de archivos de estilos, tambièén se pueden utilizar estilos css sin problema en estos archivos
+- main.ts es propio de angular, cuando se arranque la aplicación indica qué módulo se va a cargar
+
+/assets
+Recursos estáticos, imágenes e íconos a que va a emplear la aplicación
+
+component.module.ts, archivo para registrar los componentes entre otros que se van a utilizar de manera local dentro del componente donde es declarado, sin embargo no quedan de manera global como cuando se registran en el app.module.ts
+
+providers, son los servicios, uso de peticiones http
+theme, estilos para modificar
+
+index.html, es el mismo index de angular
+manifest.json indica colores entre otros en aplicaciones progresivas
+service-worker.js un archivo que indica que se van a trabajar características de manera nativa a la plataforma en donde se va desplegar la aplicación
+
+comando para generar las carpetas de la plataforma, crea una aplicación de java lista para agregar por android studio:
+$ ionic cordova platform add android
+
+Si las aplicaciones en android fallan, resuelve problemas de versiones de construcción del build, se deben tener en cuenta esos comandos
+ionic cordova platform remove android
+ionic cordova platform add android@6.4.0
+ionic cordova build android
