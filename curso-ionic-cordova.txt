@@ -1,3 +1,117 @@
+
+Curso de ionic
+
+Prerequisitos para desarrollar en ionic
+- Instalar node.js, en la versión LTS
+- Instalar el Angular CLI
+- Se debe instalar ionic, para instalar ionic se debe ingresar el siguiente comando, ingresar a la página https://ionicframework.com/ para más instrucciones:
+$ npm install -g cordova ionic
+$ npm install -g ionic # Instalar ionic sin cordova
+
+Instalaciones adicionales:
+- Descargar git de la página:
+https://git-scm.com/download
+- Posterior a la instalación de Git, se deben ejecutar los siguientes comandos:
+$ git config --global user.email "email@example.com"
+$ git config --global user.name "Mona Lisa"
+
+Qué es ionic
+Para poder desarrollar en plataformas como Android, iOS, ó Windows Phone, se deben conocer por lo menos los siguientes lenguajes de programación:
+- Objective-C, y Swift para iOS
+- Java para Android
+- Visual C# para Windows Phone
+
+Es un marco de trabajo parecido a bootstrap, tiene estilos, modals, controles de navegación, alertas, entre otras características. Que si se siguen estos lineamientos la aplicación va a parecer una aplicación nativa, pero corriendo en un navegador web. El objetivo es tomar todo el código html, css y javascript y transformarlo en una aplicación nativa, para esto ionic utiliza Angular como motor de su aplicación, ya que Angular va conectarse, ya que con Angular es quién va a procesar:
+- Las peticiones https
+- Procesar la data
+- Va a realizar la petición a servicios
+Junto con ionic, que se encarga de hacer ver la aplicación como si se fuera a ver en un celular, si se siguen estos lineamientos, y adicionalmente se pasa el desarrollo a través del framework de cordova, se terminará creando una aplicación totalmente nativa, es decir, una aplicación que se subirá a la playstore y a la appstore
+- ionic 1 trabaja con AngularJS
+- ionic 2 trabaja con Angular 2
+con ionic se tienen las siguientes características:
+- Estilos
+- Navegación
+- Tabs
+- Alertas
+- HTML
+- SCSS y CSS
+- Modals
+- Listas
+Cordova trae los siguienes plugins que tienen acceso a las características de hardware del dispositivo:
+- 3D touch
+- Cámara
+- Contactos
+- Browser
+- Calendario
+- Clipboard
+- Share
+- Archivos
+- Shakes
+- Giroscopios
+- Geolocalización
+Con Angular:
+- Componentes
+- Pipes
+- HTTP
+- Directivas
+- Módulos
+- Servicios
+- Data binding
+
+
+ionic 2 y ionic 3
+- El cambio entre ionic 2 y ionic 3 noes significativo, como lo fue ionic 1 a la versión 2, en la cual hubo cmabio en la sintáxis del lenguaje
+- Es una simple actualización mayor (la versión 3)
+- ionic ahora utilizará el sistema de versionamiento semántico (x.y.z)
+    - z corrección de bugs
+    - y cambios menores en la experiencia de usuario sin ser un cambio radical
+    - x si es un cambio considerable en la experiencia de usuario
+- Como Angular, las versiones seguirán progresando hacia la versión 4, y y así sucesivamente pero seguirá siendo el mismo framework
+- Existen muchas mejoras en la versión de ionic 3, y pocos cambios radicales (sin embargo los hay)
+
+documentación de ionic framework
+- Documentación: Components -> Todos los componentes gráficos
+- Documentación: API -> Documentación de todos los componentes pero más detallada, como por ejemplo atributos, funciones, etc.
+- Documentación: Native -> Documentación de todos los plugins de apache cordova.
+- Documentación: Storage -> Documentación referente a la persistencia de información en el dispositivo
+- Theming: Cambio de aspecto de aplicaciones
+- ionicons: Se encuentran las librerías de íconos precargados para que se puedan utilizar en la aplicación
+- CLI: Command Line Interface, emular dispositivo iOS o Android, generar aplicaciones, correr una aplicación, crear un servidor de pruebas
+
+Crear una cuenta en ionic framework
+
+https://dashboard.ionicjs.com/appstore
+Visualizar dashboard con aplicaciones viejas
+https://apps.ionic.io
+
+
+crear un proyecto nuevo desde ceros de ionic
+$ ionic start nuevo-proyecto blank --no-git
+
+Obtener el listado de las plantillas disponibles:
+$ ionic start --list
+
+name     | project type  | description
+--------------------------------------------------------------------------------------------------------------------------------
+blank    | angular       | A blank starter project
+sidemenu | angular       | A starting project with a side menu with navigation in the content area
+tabs     | angular       | A starting project with a simple tabbed interface
+tabs     | ionic-angular | A starting project with a simple tabbed interface
+blank    | ionic-angular | A blank starter project
+sidemenu | ionic-angular | A starting project with a side menu with navigation in the content area
+super    | ionic-angular | A starting project complete with pre-built pages, providers and best practices for Ionic development.
+tutorial | ionic-angular | A tutorial based project that goes along with the Ionic documentation
+aws      | ionic-angular | AWS Mobile Hub Starter
+tabs     | ionic1        | A starting project for Ionic using a simple tabbed interface
+blank    | ionic1        | A blank starter project for Ionic
+sidemenu | ionic1        | A starting project for Ionic using a side menu with navigation in the content area
+maps     | ionic1        | An Ionic starter project using Google Maps and a side menu
+
+
+Crear una nueva página
+$ ionic generate page Detail --no-module
+
+
 https://ionicframework.com/docs/cli
 
 $ npm install -g ionic@latest
@@ -75,3 +189,6 @@ Si las aplicaciones en android fallan, resuelve problemas de versiones de constr
 ionic cordova platform remove android
 ionic cordova platform add android@6.4.0
 ionic cordova build android
+
+
+
