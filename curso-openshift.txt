@@ -1,0 +1,32 @@
+
+PAAS -> (Platform As A Service) Plataforma como un servicio, que es un modelo que ofrece todo lo necesario para soportar todo el ciclo de vida completo de una aplicación desde la puesta en marcha y ejecución de un servicio en la nube
+
+Openshift es la plataforma más utilizada
+
+Curso de openshift
+- Crear y autenticar la cuenta, que da acceso para crear y desplegar aplicaciones
+https://manage.openshift.com/sign_in
+
+Para utilizar Red Had Cloud Tools
+- Instalar ruby, desde la página de https://rubyinstaller.org, se debe habilitar la inclusión de la ruta de los ejecutables de ruby
+- Comprobar la instalación del ruby
+$ ruby --version
+ó
+$ ruby -v
+- Instalar GIT, se debe habilitar la ejecución del GIT desde el path para windows, con la opción para instalar GIT para la cmd de windows
+- Se debe instalar mediante el gestor de paquetes de ruby, el Red Hat Cloud tools ó rhc mediante la siguiente instrucción (el gem es similar al npm de Node.js o al composer de PHP):
+$ gem install rhc
+
+Para solucionar el error warnings con deprecated, se debe editar el siguiente archivo
+C:\Ruby24-x64\bin\rhc
+E indicar al ruby en la inicialización que no tenga en cuenta los mensajes de warning con el modificador -W0
+#!C:/Ruby24-x64/bin/ruby.exe -W0
+
+
+Configurar la herramienta rhc para prepararla para que funcione con la cuenta en línea de openshift
+Enter the server hostname: |openshift.redhat.com|, se deja el servidor popr defecto
+
+
+
+Unable to connect to the server (getaddrinfo: Unknown host. (https://www.openshift.com:443)). Check that you have correctly specified your OpenShift server 'https://openshift.redhat.com/broker/rest/api'.
+
