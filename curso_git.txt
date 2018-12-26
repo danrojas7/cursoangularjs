@@ -182,7 +182,7 @@ Cada archivo que se encuentra en el directorio de trabajo, puede encontrarse en 
     - untracked: no rastreado, son todos los demás archivos, después de un commit, cuando se crean nuevos archivos, estos quedan con estado untracked porque no han sido enviados en ningún commit.
 
     Los archivos obtenidos de un repositorio recién clonado, son archivos tracked, que a su vez son unmodified, si se modifican los archivos estos quedan en estado modified, pero al realizar commit, se debe recordar que solo los archivos que se agregaron a stage, es decir que están en estado stagged, solamente van a incluirse en dicho commit.
-    
+
 Ciclo de vida del status de un archivo
     - untracked, cuando se añade un archivo nuevo, el cual de momento no hace parte de ningún commit.
     - Cuando se añade el archivo en el proyecto, este archivo se encuentra en estado unmodified, cuando se agrega nuevo o se copia de otro proyecto.
@@ -190,7 +190,7 @@ Ciclo de vida del status de un archivo
     - Para que las modificaciones pasen a hacer parte del repositorio, primero deben enviarse al stage, que es la plataforma que permite añadir todas aquellas modificaciones que queremos que hagan parte de un commit.
     - Debe hacerse un commit, para que todos los cambios pase a hacer parte del repositorio, con lo cual todos los archivos que hace parte de ese commit, pasan a hacer parte nuevamente del estado unmodified
     El ciclo anterior se repite
-    
+
 Para que el archivo que esté en un estado tracked, y pase a un estado untracked, debe eliminarse del repositorio mediante el comando remove.
 Para obtener el estado de los archivos, si los archivos se encuentran tracked, untraked, unmodified, modified, o stagged, se hace mediante el comando siguiente:
     $ git status
@@ -217,36 +217,76 @@ Lo que se debe tener en cuenta para el archivo .gitignore
 www.jedit.org/users-guide/globs.html
 Página donde se pueden ver los glob pattern en muchos shells de unix, que son expresiones regulares simplificadas.
 Archivos, formatos, directorios, etc
-    
+
 - Para traer todos los cambios realizados en una ramificación, descargarlos del repositorio:
     $ git pull origin master
 
-    
-Instalar jQuery
-- Se puede añadir jQuery al package.json
-- Instalarlo a partir del CDN, descargarla manual y referenciarla en el index del proyecto
-- Para utilizarse dentro de un typescript del componente
-declare var jQuery: any;
-declare var $: any;
+Para saber exactamente qué es lo que se está cambiando
+Que se ha modificado pero que no se encuentra en el stage
+Qué se ha añadido al stage, pero que no se le ha realizado un commit
+$ git diff
+
+Se genera un scaffolding de prueba para versionar, con os siguientes comandos:
+ $ mkdir vt3a
+ $ touch controles.c
+ $ touch README
+ $ git init
+ $ git add controles.c README
+ $ git commit # Se añade la línea del comentario dentro del editor vim, y se guardar con ESC -> :wq
+
+Se modifican ambos archivos añadiendo más contenido
+ $ git add README
+ $ git diff # Indica los cambios que se han realizado sobre los archivos, pero que aún no se han enviado al stage
+ $ git diff --staged # Comando que muestra de manera muy detallada las modificaciones que se han realizado sobre un archivo
+
+Para saber exactamente lo que se ha cambiado entre dos versiones de un mismo archivo
+muestra los cambios de los archivos que están unstaged
+$ git diff
+
+$ git commit -v # va a guardar también la información del diff, se guarde en la descripción del commit dentro de las observaciones del stage
+$ git commit -m 'tercer cambio' # Se añade la opción -m para agregar el comentario directamente y no a través del editor por defecto
 
 
-Proyecto de angular en producción
-Paso 1. Crear proyecto con Angular CLI: ng new restaurantes-an2prod
-Paso 2. Copiar directorio app del proyecto ya creados
-Paso 3. Cambiar paths de vistas e imágenes para adaptar a la estructura de CLI
-Paso 4. Probar la APP con ng serve
-Paso 5. Generar build: ng build --producción
-Paso 7. Copiar al directorio del servidor (host)
-Paso 6. Cambiar base url (si estamos en un subdirectorio)
-Paso 7. Añadir .htaccess (si estamos en un subdirectorio)
-<IfModule mod_rewrite.c>
-	Options Indexex FolowSymLinks
-	RewriteEngine On
-	RewriteBase /client/
-	RewriteRule ^index\.html$ - [L]
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteCond . index.html [L]
-</IfModule>
+Opción para saltarse el staged
+
+$ git commit -a -m 'cuarto commit' # Se hace commit a cambios que no necesariamente se encuentren en el stage
+
+Eliminar archivos en git
+Se tienen que eliminar de los archivos rastreados, eliminarlo del área de staggin, y a continuación hacer un git commit
+$ git rm # se elimina de commit el archivo
+
+Si se borra el archivo directamente por consola, o se borra por medio del explorador de archivos, y al hacer un git status, el mismo va a indicar que el archivo está tracked, con lo cual hay que hacerle un git rm para eliminarlo del stage, es decir para que el archivo deje de estar trackeado o rastreado por git 
+$ git rm archivoparaborrar
+
+Comando para descartar los cambios que no se encuentren en stage:
+$ git checkout nombredelarchivo.file
+
+La opción de rm no funciona con archivos que se hayan colocado en el stage, y que se esté esperando el siguiente commit, por lo tanto se debe agregar la opción o flag -m, git rm -f, se trata de un mecanismo de seguridad que tiene git para prevenir la eliminación de cambios que no se encuentre en un snapshot
+
+$ git rm -f archivocacheado
+
+Para que el archivo se retire del área stage, pero que continue en el disco duro, se pueda realizar el modificador --stage
+$ git rm --chached archivoenstage
+
+La orden git rm, se puede realizar sobre archivos y directorios
+$ git rm \*~
+$ git rm log/\*.log
+
+Cómo gestiona git el movimiento del archivo con git mv
+$ git mv nombrearchivoantiguo nombrearchivonuevo
+
+Si se realiza un renombrado de un archivo con el comando genérico de linux, git detecta automáticamente los cambios realizados:
+    $ mv nombrearchivoantiguo nombrearchivonuevo
+Si se hace un status en este cambio, se nota que el borrado de nombrearchivoantiguo no se encuentra staged, lo mismo que el añadir el nombrearchivonuevo, no se encuentra staged
+A continuación se borra el archivo antiguo mediante la siguiente instrucción a git
+    $ git rm nombrearchivoantiguo
+A continuación, al comprobar el status, se puede observar que tanto los cambios de borrado del nombrearchivoantiguo, como del la creación del archivo nombrearchivonuevo, no se encuentran en stage
+Se añade el cambio del archivo nuevo al stage
+    $ git add nombrearchivonuevo
+Si se comprueba el estado de los cambios, se puede ver que git detectó los cambios a nivel del sistema de archivos como si se hubiera modificado el nombre del archivo
+
+Ayuda de conmandos comprimidos directamente en la ayuda de github
+help.github.com/git-cheat-sheets/
+
 
 
