@@ -24,7 +24,7 @@ E indicar al ruby en la inicialización que no tenga en cuenta los mensajes de w
 
 
 Configurar la herramienta rhc para prepararla para que funcione con la cuenta en línea de openshift
-Enter the server hostname: |openshift.redhat.com|, se deja el servidor popr defecto
+Enter the server hostname: |openshift.redhat.com|, se deja el servidor por defecto
 
 
 
