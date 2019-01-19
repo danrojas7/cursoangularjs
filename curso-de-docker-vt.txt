@@ -1,0 +1,49 @@
+
+En 2016 fue la aparición de los contenedores digitales dentro del desarrollo de software, principalmente de docker, lo que ofrede docker es un nuevo modo de empaquetar, ejecutar y distribuir aplicaciones
+
+Empaquetar en un único bloque todas las dependencias que necesita para ejecutarse, desde los binarios, librería, configuración y runtime todo lo que se pueda instalar en un servidor, el bloque recibe el nombre de contenedor docker, una unidad estándar para el desarrollo y despliegue de aplicaciones. Esto garantiza que el software se va a comportar del mismo modo sin importar en qué ambiente se ejecute
+
+Por ejemplo se pueden ejecutar contenedores con Node.js y con Java, que son dos tecnologías que no tienen en común entre sí, sin tener necesidad de tener instalado ninguno de los dos en la áquina host.
+
+No se trata ni de un lenguaje de programación, ni de un framework, es una herrmienta que ayuda a solventar problemas comunes con la instalación, distribución y gestión de software. Permite a los programadores y a los DevOps construir, distribuir y ejecutar su código en cualquier sitio.
+
+Esto se puede confundir con un motor de virtualización pero no es así:
+La máquina virtual tradicional que representa la virtualización a nivel de hardware, no es más que un completo sistema operativo que se ejecuta sobre un sistema operativo host, la principal ventaja es que se pueden ejecutar muchas máquinas virtuales con sistemas operativos virtuales totalmente diferentes en un único host. Las máquinas virtuales están totalmente aisladas, de ahí a que sea muy seguras, pero esto tiene un coste, ya que tienen que contener todo lo que un sistema operativo necesita, lo que los convierte un gran consumidor de recursos, lo que limita la cantidad de máquinas virtuales que se ejecutan en un único host.
+
+Por su parte, el software docker se ejecuta en un entorno aislado llamado contenedor docker, un contenedor docker no es una máquina virtual, las imágenes docker se ejecutan dentro del mismo kernel del sistema operativo, un contenedor puede tener sus propios archivos del sistema y sus propios archivos de configuración y variables de entorno, son totalmente autosuficientes. Pero como los contenedores se ejecutan dentro del mismo kernel, consumen muy pocos recursos del sistema, son muy ligeros, y no cuentan con los problemas que conlleva la vitualización clásica. Esto es lo que permite que una aplicación incluída dentro un contenedor docker se acerque mucho al rendimiento nativo, el booteo de una aplicación docker es usualmente muy rápido, debido a la baja sobrecarga de los contenedores. Docker por tanto es diferente a los motores de vitualización, no está totalmente asilado con relación a éstos, pero tienen rendimiento mucho más alto
+
+Resumen de los beneficio de los contenedores:
+- Gran rendimiento
+- Creación y destrucción rápida
+- Reducido tiempo de Provisión
+
+Docker solo comparte el kernel, pero reutiliza las capas imagen, lo que permite un despliegue rápido, una migración sencilla y unos tiempos de arranque bastante ágiles.
+Otro beneficio de docker, es que permite generar builds portables, y extremadamente fáciles de distribuir. La aplicación se ejecuta dentro de su propio contenedor, por lo que no es necesaria su instalación tradicional. La ventaja clave de una imagen docker es que incluye todas las dependencias que una aplicación necesita para ejecutarse, la ausencia de instalación de dependencias es una gran ventaja, elimina los problemas como los conflictos entre software y librerías, o problemas de compatibilidades de drivers. El uso de contenedores docker acelera la integración contínua, se acaron los ciclos interminables de build, test y deploy. Los contenedores docker nos asegura que las aplicaciones se va a ejecutar del mismo modo en desarrollo, en test y en entornos de producción.
+
+Una de las grandes características de docker es la portabilidad, por lo que los contenedores docker son portables, por lo que se pueden ejecutar desde cualquier sitio, por ejemplo en una máquina local, un servidor cercano o lejano, o en la cloud ya sea pública o privada.
+
+Los mayores proveedores de computing cloud ya soportan docker. Podemos desarrollar software , si preocuparnos por la plataforma en la que se va a ejecutar más adelante. Realmente se trata de una solución para escribir el código una vez, y ejecutarlo en cualquier sitio.
+
+Docker por tanto, nos permite contar con un servidor ligero que no necesita de gestión de la configuración y en el que manejamos nuestras aplicaciones simplemente desplegando y redesplegando contenedores al servidor, como estos contenedores son muy ligeros, se ejecutan de un modo muy rápido. Como un punto de inicio, se pueden descargar imagenes preconstruidas desde la página de docker hub. Se trata de un repositorio de imágenes preparadas para usar, hay elecciones de todo tipo servidores web, platformas runtime, bases de datos, servicios de mensajería entre otros. Es como una auténtica mina de oro de software que podemos usar por libre para tener una base o un fundamiento para iniciar nuestros proyectos.
+
+El efecto de la inmutabilidad de las imágenes docker es el resultado en el modo en el que son creadas, docker hace uso de un archivo de configuración llamado dockerfile, este archivo dockerfile contiene todas las instrucciones de configuración sobre como crear la imagen, los componentes obligatorios, librerías, directorios compartidos, configuración de red y demás. Una imagen puede ser muy básica, que solo puede tener los fundamentos del sistema operativo o algo que es más común, una completa pila de tecnologías preconstruidas que están preparadas para lanzarse.
+
+Pero desde luego docker, no solo es un procesador dockerfile y un motor runtime, es un paquete completo con una amplia selección de herramientas y APIs que son útiles para el trabajo diario del desarrollador, y lo primero de todo son los docker toolbox, se trata de un installer para Windos y Mac, que nos permite fácilmente instalar y configurar un entorno docker nuestra propia máquina.
+
+Las herramientas que contiene docker:
+- Docker engine
+- Compose
+- Machine
+- Kitematic - Entorno de desarrollo de escritorio para usar docker tanto en Windows como en Mac
+
+
+
+
+
+
+
+
+
+
+
+
