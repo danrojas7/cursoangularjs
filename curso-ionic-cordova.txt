@@ -191,4 +191,31 @@ ionic cordova platform add android@6.4.0
 ionic cordova build android
 
 
+Empaquetar proyecto en ionic
+Instalar en el proyecto las dependencias para la plataforma
+$ ionic cordova build android
+Generar el build
+$ ionic cordova build android --prod --release
+
+
+
+
+Dato para preaprobado
+50937772
+
+mongo -u $MONGODB_USER -p $MONGODB_PASSWORD dashboard
+date '+%A %W %Y %X'
+
+Generar un archivo war de ionic
+$ npm install grunt-war --save-dev
+$ npm install -g grunt-cli
+$ npm install grunt -g
+$ npm install grunt --save-dev
+$ npm install
+$ ng build --prod --base-href "/dashboard/"
+$ grunt
+
+
+Integrar cordova a un proyecto ionic
+$ ionic integrations enable cordova
 
