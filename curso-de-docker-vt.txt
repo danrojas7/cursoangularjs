@@ -37,6 +37,29 @@ Las herramientas que contiene docker:
 - Kitematic - Entorno de desarrollo de escritorio para usar docker tanto en Windows como en Mac
 
 
+Una de las grandes ventajas de docker es crear instancias remotamente, mediante la docker machine
+
+Actualizar el software del sistema operativo
+$ sudo yum update -y
+
+Instalar docker
+$ sudo yum install -y docker
+
+Iniciar el servicio de docker
+$ sudo service docker start
+
+Configurar el servicio para que se inicie con el sistema
+sudo chkconfig docker on
+
+Añadir el usuario al grupo docker
+$ sudo usermod -a -G docker name-user
+
+
+Iniciar una nueva imagen de docker
+$ docker run hello-world
+
+
+
 
 
 
