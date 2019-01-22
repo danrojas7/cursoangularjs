@@ -41,9 +41,11 @@ Una de las grandes ventajas de docker es crear instancias remotamente, mediante 
 
 Actualizar el software del sistema operativo
 $ sudo yum update -y
+$ zypper update
 
 Instalar docker
 $ sudo yum install -y docker
+$ zypper install docker
 
 Iniciar el servicio de docker
 $ sudo service docker start
@@ -54,19 +56,187 @@ sudo chkconfig docker on
 Añadir el usuario al grupo docker
 $ sudo usermod -a -G docker name-user
 
-
 Iniciar una nueva imagen de docker
 $ docker run hello-world
 
+Para detener un contenedor:
+$ docker stop
+
+Listar todos los contenedores docker en ejecución:
+$ docker ps
+Listar todos los contenedores docker:
+$ docker ps -a
+Listar el tamaño de los contenedores
+$ docker ps -s
+
+En las últimas versiones de docker:
+Listar todos los contenedores en ejecución:
+$ docker container ls
+
+Para traer una imagen de dockerhub, se utiliza el siguiente comando
+$ docker pull kitematic/hello-world-nginx
+
+Para eliminar un contenedor docker, se utiliza el siguiente comando:
+$ docker rm id
+Donde Id es el identificador del contenedor
+
+Para comprobar las imágenes que se encuentran en docker, se utiliza el siguiente comando:
+$ docker images
+Para eliminar imágenes, se puede mediante el comando siguiente:
+$ docker rmi nombredelaimagen
+
+para eliminar una imagen que esté siendo usada por el contenedor, se debe pasar el modificador -f
+$ docker rmi -f kitematic/hello-world-nginx:latest
+
+Se pueden usar los contenedores para generar nuestras propias imágenes personalizadas, desde la terminal podemos salvar el contenedor que queramos como una imagen personalizada, para ello se requiere la id del contenedor o el nombre, y se utiliza con el siguiente comando:
+$ docker commit 33e54776e5a5
+El comando utilizado tiene un comportamiento similar a como se utiliza en git
+
+También se puede hacer commit estableciendo el nombre personalizado de la imagen:
+$ docker commit goofy_kepler danrojas7/mynginx
+
+Al listar las imágenes con el siguiente comando, se pueden observar las imágenes:
+$ docker images
 
 
+Finalmente, para correr el contenedor a partir de la imagen, personalizada, se utiliza el comando siguiente:
+$ docker run --name test-nginx -d danrojas7/mynginx
+
+La imágenes también pueden crearse mediante el archivo dockerfile
+
+Como utilizar dockerhub ara subir imagenes
+- Crear una cuenta en dockerhub
+- Desde la interfaz web de dockerhub se permite crear un repositorio, pero se va a hacer mediante la línea de comandos:
+  Antes de hacer push a la imagen personalizada, se va a cambiar el tag si se requiere, para ello utilizamos el siguiente comando:
+$ docker tag danrojas7/mi-ingx danrojas7/nginx-subido
+  Ahora se debe loguearse en la terminal a dockerhub, para ello se dene ingresar los siguientes comandos:
+$ docker login
+Ingresar el nombre de usuario  y la contraseña con la que se haya creado la cuenta en dockerhub
+$ docker push danrojas7/nginx-subido
+Si volvemos al navegador web, se puede observar la imagen recién subida
+
+Las redes en los contenedores
+Cuando creamos un contenedor, no es muy útil si no podemos conectarlo, en alguno de los contenedores configurados, se ha utilizado la opción p que permite cunfigurar nuestros puertos, lo que hacemos es conectar a la dirección IP de nuestra máquina host para acceder a nuestros contenedores. Tenemos también direcciones IP que están asignadas a cada contenedor, estas direcciones IP llegan desde la red docker instala cuando se instala la docker machine. Docker machine nos provee con redes prediseñadas pero adicionalmente provee un par de drivers de red diferentes para nuestro uso: los drivers bridge y overlay, el overlay sólo se utiliza cuando se tenga múltiples host, y para la mayoría de los casos la red bridge es todo lo que necesitamos, básicamente lo que hace es crear una red al vuelo en la máquina host, en cualquier momento que creemos un contenedor, se añade a la red bridge por defecto.
+
+https://docs.docker.com/network/
+
+Para listar las redes que tengamos activas, se puede hacer mediante el siguiente comando:
+$ docker network ls
+Asegurarse que se encuentre un contenedor en ejecución, por medio de kitematic
+Mediante el comando
+$ docker network inspect bridge
+Este comando, muestra las propiedades de la red bridge, cualquier contenedor que añadamos, automáticamente se va a listar en las propiedades de la red junto con la dirección IP. Uno de los grandes beneficios del uso de docker, es que nos permite construir aplicaciones a partir de microservicios, lo que significa es que podemos conectar una base de datos a un frontend para construir una aplicacion web por ejemplo, en la mayoría de los casos es necesaria una dirección IP para ello.
+
+También podemos crear nuestra propia red, con el comando network create, de la siguiente manera:
+$ docker network create mi-red
+
+Si listamos las redes, vemos como nos aparece la red que acabamos de crear
+$ docker network ls
+
+Si inspeccionamos la red mediante el uso del siguiente comando:
+$ docker network inspect mi-red
+
+Podemos ver que no tiene ningún contenedor ningún contenedor adicionado.
+
+Para conectar un contenedor existente a la red recién creada, en primer lugar se debe desconectar el contenedor de la red brigde a la que se agrega por defecto cuando el contenedor es creado, esto se hace mediante el comando siguiente:
+$ docker network disconnect bridge nginx-compartido
+
+Y a continuación se conecta mediante el siguiente comando:
+$ docker network connect mi-red focused_minsky
+
+Para realizar puente entre el contenedor incluido en la red bridge, se ejecuta el siguiente comando:
+$ docker run --name mi-apache -p 2244:80 -v //d/drojas/apache:/usr/local/apache2/htdocs/ -d httpd
+--name mi-apache    # nombre del contenedor
+-p 2244:80          # se le indica el puerto, 2244 de la máquina host, puenteado al puerto 80 del contenedor
+-v //d/drojas/apache:/usr/local/apache2/htdocs/
+                    # se le indica la configuración del volumen, el volumen del disco local //d/drojas/apache, vinculado al
+                    # volumen remoto /usr/local/apache2/htdocs/, que es e que utiliza apache para servir las páginas web que se
+                    # encuentren adentro de este directorios
+-d httpd            # indica la imagen en la que se va a basar el contenedor
+                    
+La configuración del mapeo de los volúmenes, lo incluye el contenedor en su dockerfile
+
+Para instalar ghost, no requiere sino solamente la imagen oficial
+Para instalar wordpress, como requiere una solución multistack, en lo que se refiere a la imagen bitnami/wordpress, lo que se debe hacer es ingresar a la documentación de wordpress para docker, e instalarlo según esas instrucciones, creando el archivo de configutación, y con el siguiente comando, descarga las imágenes y crea los contenedores docker:
+$ docker-compose up -d
 
 
+Crear una imagen docker de una aplicación Flask de python
+
+Crear una imagen docker con la aplicación que se encuentra en el repositorio git
+https://github.com/0utKast/flask-app.git
+
+todas la imágenes que samos, están basadas en una imagen base, como la imagen es de python, debemos construir una imagen que esté basada en python.
+Se utiliza alpine para crear la imagen
 
 
+Un dockerfile es un archivo de texto que contiene una lista de comandos que el daemon de docker va a invocar cuado cree una imagen, El dockerfile contiene la información que necesita docker para saber cómo ejecutar esa aplicación, se trata de un modo sencillo de automatizar el proceso de creación de imágenes y lo mejor es que los comandos que se escriben en el dockerfile, es el equivalente a escribir comando linux.
+https://docs.docker.com/engine/reference/builder/
 
+Con el siguiente comando, se va a crear una imagen docker a partir del contenido del directorio de flask con aplicación python
+docker build -t danrojas7/miprimerapp .
 
+Por último, se crea el contenedor docker a partir de la imagen
+docker run --name miprimerimagen -p 8888:5000 -d danrojas7/miprimerapp
 
+Crear un entorno docker en windows 10
+docker, el sistema que automatiza el despliegue de aplicaciones, dentro de contenedores de software, ha permitido el crecimiento acelerado de microservicios, junto con kubernetes, el sistema para el manejo de esas aplicaciones, ya convertido en un ecosistema cada vez más importante para los desarrolladores, pero la instalación, implementación e integración de estas dos herramientas podría hacerse un poco complicada especialmente en windows. Se podía porque ahora ahora en windows 10 contamos con una aplicación nativa que proporciona un entorno de desarrollo facil de usar, para crear, enviar y ejecutar aplicaciones dockerizadas y totalmente integradas con kubernetes, para empezar indicar que este sistema solo está accesible para las versiones pro y enterprise de windows, también para la versión de educación. Porque usa virtualización Hyper-V, que no están disponibles en la versión Home, para la cual existe la llamada docker toolbox, pero con la limitación para integrarse con Kubernetes.
 
+La aplicación Docker Community Edition For Windows, se instala como cualquier programa windows.
+Se comprueba la versión mediante el siguiente comando:
+ $ docker --version
+Ingresar a settings
+La versión de docker para windows, incluye el soporte para kubernetes, por lo que se puede probar la implementación de sus cargas de trabajo docker en kubernetes.
+El comando del cliente de kubernetes es kubectl, y está incluído y configurado para conectarse al servidor kubernetes local y apunta a docker for desktop
+Se puede habilitar kubernetes, aunque se puede elegir la herramienta Swarm de orquestación incluida en la versión community de docker
+
+Al ir a la shell, se pueden ejecutar comandos del cliente de kubernetes
+Muestra la versión del clúster y la versión del servidor
+$ kubectl version
+
+Diagnósicos al clúster
+$ kubectl get componentstatuses
+
+Listar los nodos en el clúster
+$ kubectl get nodes
+
+Mostrar información detallada de cualquiera de los nodos
+$ kubectl describe nodes
+
+Con esto ya contamos con un completo entorno de trabajo para el desarrollo de microservicios sobre contenedores y con un sistema de orquestación integrados. Solo queda añadir que docker nos permite utilizar tanto contenedores linux como windows, por defecto, docker viene configurado para trabajar con contenedores linux, pero esto se puede cambiar en cualquier momento en el ícono de notificación de docker.
+
+Mostrar información acerca de los deamons del clúster y los puertos que están utilizando
+$ kubectl cluster-info
+
+Intalar minikubes para usar kubernetes local en windows
+Los sistemas de contenedores tienen que ejecutarse en servidores, y la tendencia creciente es hacerlo en servicios en la nube. Pero siempre, en cualquier caso, vamos a tener también que ejecutarlo en local. Para trabajar en windows, existe minicube, una herramienta que hace que sea facil ejecutar kubernetes localmente. Minikube ejecuta un cluster de kubernetes en nuestro ordenador, con lo que ya contamos con una infraestructura de inicio sin necesidad de configuración.
+
+Instalar inikube en windows
+- Instalar virtualbox
+- Instalar kubectl
+  CLI, cliente de línea de comandos de kubernetes
+  Se puede instalar mediante el manejador de paquetes de windows, que es chocolately, que es un completo sistema de administración de paquetes, que hace similar a lo que hace apt get  o yum en sistemas linux o en unix, lo hace chocolately en windows
+  
+  Una vez instalado chocolately, se procede a instalar kubectl, con el siguiente comando en el powershell o en el cmd
+  $ choco install kubernetes-cli
+  
+  Para verificar la versión, y validar que se haya instalado de forma correcta, se hace mediante el siguiente comando:
+  $ kubectl version
+  
+- Instalar el minikube
+  https://github.com/kubernetes/minikube
+
+  Una vez instalado, se puede comprobar que está funcionando.
+  
+Borrar la versión que está instalada ahora
+$ minikube delete
+
+Con este comando inicia el kubernetes local, inicia la máquina virtual, lleva a cabo todo el proceso de configuración, 
+$ minikube start
+
+Para comprobar que tanto kubectl como minikube, estan funcionando de modo correcto, ejecutamos el siguiente comando:
+$ kubectl get nodes
+
+Con esto ya contamos con una completa infraestructura para el desarrollo y orquestación de contenedores mediante el uso de docker y kubernetes mediante el uso de minikube
 
 
