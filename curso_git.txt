@@ -289,4 +289,57 @@ Ayuda de conmandos comprimidos directamente en la ayuda de github
 help.github.com/git-cheat-sheets/
 
 
+Comando para descargar una rama específica de un proyecto desde github
+git clone --single-branch --branch <branchname> host:/dir.git
 
+
+Gía comandos Ovidio
+#GIT
+#Config
+git config --global user.name "OvidioZea"
+git config --global user.email "ovidio.zea@gmail.com"
+git config -l
+#Primeros pasos
+git init  #Comando que se usa una vez para indicar que el proyecto se va a empezar a versionar
+git status #Me indica cuales archivos no estan siendo versionados por GIT
+#Lineas mas usadas
+git add .#Comando que agrega los archivos para que GIT los pueda controlar y validar 
+git commit -m "Commit Inicial" #Comando que indica que estos archivos se van a subir
+git diff #Muestra las diferencias entre los archivos locales y los que estan en master
+git checkout . #Descarga del repositorio la version de la rama
+git reset . #Elimina la fuente del stage es decir quita la fuente que agregamos con el add
+git log #Muestra los cambios hechos, el historico
+#Ramas
+git branch RELEASE2 #Crea un nueva rama
+git log --oneline --decorate --all --graph #Valida las ramas creadas y en cual estamos ubicados el HEAD
+git checkout RELEASE2 #Cambiar de rama
+git merge RELEASE2 #Unir las ramas
+git branch -d RELEASE2 #Elimina un nueva rama
+git checkout -b RELEASE3 #Crea y cambia de rama en un solo paso
+#Etiquetas
+git tag version_prueba
+git tag -d version_prueba
+git tag -a v1.0.1
+#GITHUB
+git remote add origin https://github.com/icarozea/demo_repo.git #Para sincronizar el repositorio local GIT con el remoto GITHUB
+git push -u origin master #Confirmar los cambios y enviarlos a GITHUB
+git clone https://github.com/callicoder/spring-security-react-ant-design-polls-app.git # Clonar de un repositorio remoto
+git push origin master #Confirmar los cambios y enviarlos a GITHUB
+git pull #Obliga al GIT local a bajar los cambios que esten en GITHUB remoto
+
+
+
+
+Guía comandos modificación:
+
+git config --list
+git clone https://github.com/bdb-dns/DAPGP-TDO-Dashboard.git
+git config --global http.proxy http://usuario:contraseña@piscis01.bancodebogota.net:8003
+git clone https://github.com/bdb-dns/DAPGP-TDO-Dashboard.git
+git config --global http.sslVerify false
+git config --list
+git clone https://github.com/bdb-dns/DAPGP-TDO-Dashboard.git
+git status
+git checkout dev
+git status
+git checkout -b feature/geolocalizacion
