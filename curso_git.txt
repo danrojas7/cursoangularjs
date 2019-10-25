@@ -285,12 +285,15 @@ Se añade el cambio del archivo nuevo al stage
     $ git add nombrearchivonuevo
 Si se comprueba el estado de los cambios, se puede ver que git detectó los cambios a nivel del sistema de archivos como si se hubiera modificado el nombre del archivo
 
-Ayuda de conmandos comprimidos directamente en la ayuda de github
+Ayuda de comandos comprimidos directamente en la ayuda de github
 help.github.com/git-cheat-sheets/
 
 
 Comando para descargar una rama específica de un proyecto desde github
 git clone --single-branch --branch <branchname> host:/dir.git
+
+Comando para almacenar las credenciales de acceso del usuario, para que no vuelva a pedir autenticación al mismo
+git config credential.helper store
 
 
 Gía comandos Ovidio
@@ -343,3 +346,51 @@ git status
 git checkout dev
 git status
 git checkout -b feature/geolocalizacion
+
+
+# Revert changes to modified files.
+git reset --hard
+
+# Remove all untracked files and directories. (`-f` is `force`, `-d` is `remove directories`)
+git clean -fd
+
+Ver el detalle de un commit:
+git show a303aa90779efdd2f6b9d90693e2cbbbe4613c1d
+
+Guardar el estado de los cambios no versionados, para realizar un pull o un cambio de rama
+$ git stash
+
+Listar los cambios que se encuentran en stash
+$ git stash list
+
+Traer los cambios en stash de vuelta al espacio de trabajo del GitHub
+$ git stash apply
+
+Quitar los cambios que se encuentran en stash
+$ git stash clean
+
+
+
+
+Rename a local and remote branch in git
+If you have named a branch incorrectly AND pushed this to the remote repository follow these steps before any other developers get a chance to jump on you and give you shit for not correctly following naming conventions.
+
+1. Rename your local branch.
+If you are on the branch you want to rename:
+
+1
+git branch -m new-name
+If you are on a different branch:
+
+1
+git branch -m old-name new-name
+2. Delete the old-name remote branch and push the new-name local branch.
+
+1
+git push origin :old-name new-name
+3. Reset the upstream branch for the new-name local branch.
+Switch to the branch and then:
+
+1
+git push origin -u new-name
+
