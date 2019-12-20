@@ -255,7 +255,7 @@ Eliminar archivos en git
 Se tienen que eliminar de los archivos rastreados, eliminarlo del área de staggin, y a continuación hacer un git commit
 $ git rm # se elimina de commit el archivo
 
-Si se borra el archivo directamente por consola, o se borra por medio del explorador de archivos, y al hacer un git status, el mismo va a indicar que el archivo está tracked, con lo cual hay que hacerle un git rm para eliminarlo del stage, es decir para que el archivo deje de estar trackeado o rastreado por git 
+Si se borra el archivo directamente por consola, o se borra por medio del explorador de archivos, y al hacer un git status, el mismo va a indicar que el archivo está tracked, con lo cual hay que hacerle un git rm para eliminarlo del stage, es decir para que el archivo deje de estar trackeado o rastreado por git
 $ git rm archivoparaborrar
 
 Comando para descartar los cambios que no se encuentren en stage:
@@ -306,7 +306,7 @@ git config -l
 git init  #Comando que se usa una vez para indicar que el proyecto se va a empezar a versionar
 git status #Me indica cuales archivos no estan siendo versionados por GIT
 #Lineas mas usadas
-git add .#Comando que agrega los archivos para que GIT los pueda controlar y validar 
+git add .#Comando que agrega los archivos para que GIT los pueda controlar y validar
 git commit -m "Commit Inicial" #Comando que indica que estos archivos se van a subir
 git diff #Muestra las diferencias entre los archivos locales y los que estan en master
 git checkout . #Descarga del repositorio la version de la rama
@@ -393,4 +393,18 @@ Switch to the branch and then:
 
 1
 git push origin -u new-name
+
+
+Preferred Way (because it's a plumbing command; meant to be programmatic):
+$ git diff-tree --no-commit-id --name-only -r bd61ad98
+index.html
+javascript/application.js
+javascript/ie6.js
+
+
+Another Way (less preferred for scripts, because it's a porcelain command; meant to be user-facing)
+$ git show --pretty="" --name-only bd61ad98
+index.html
+javascript/application.js
+javascript/ie6.js
 
